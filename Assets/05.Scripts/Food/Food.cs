@@ -44,6 +44,5 @@ public class Food : MonoBehaviour
     }
 
     public Type type;
-
     public static HashSet<Action> canPerformedMultiTimes = new HashSet<Action>() { Action.Cut, Action.Roast, Action.Skewer };
 }

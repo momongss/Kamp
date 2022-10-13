@@ -12,6 +12,8 @@ TagManager:
   - CanBaked
   - Fire
   - Pot
+  - FoodPiece
+  - Kochi
   layers:
   - Default
   - TransparentFX

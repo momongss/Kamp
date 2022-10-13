@@ -35,6 +35,8 @@ public class Tag
     public const string CanBaked = "CanBaked";
     public const string Fire = "Fire";
     public const string Pot = "Pot";
+    public const string FoodPiece = "FoodPiece";
+    public const string Kochi = "Kochi";
 }
 
 public class Scene

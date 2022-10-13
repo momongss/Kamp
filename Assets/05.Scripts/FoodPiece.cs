@@ -9,10 +9,15 @@ public class FoodPiece : MonoBehaviour
 {
     bool isCutable = true;
 
+    public bool isStickable = false;
+
     List<Transform> childs = new List<Transform>();
     Rigidbody rigid;
+    XRGrabInteractable grabInteractable;
 
     Cuttable parentIngredient;
+
+    Kochi kochi;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,24 +27,86 @@ public class FoodPiece : MonoBehaviour
         {
             CookManager.Instance.OnCompleteWork(parentIngredient.foodType, Food.Action.PutInPot);
         }
+
+        if (other.CompareTag(Tag.Kochi))
+        {
+            kochi = other.GetComponent<Kochi>();
+
+            print("꽂을려고 시도함.");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(Tag.Kochi))
+        {
+            print("여기");
+            if (kochi == other.GetComponent<Kochi>())
+            {
+                print("꽂을려다 말았음.");
+
+                kochi = null;
+            }
+        }
     }
 
     private void Awake()
     {
-        // FoodPiece 는 항상 Cuttable 자식으로 존재하는 걸로 가정한다.
-        parentIngredient = transform.parent.GetComponent<Cuttable>();
+        // FoodPiece 가 자를 수 있다면(piece 가 1개 이상) Cuttable 자식으로 존재하는 걸로 가정한다.
+        if (transform.childCount > 1)
+        {
+            parentIngredient = transform.parent.GetComponent<Cuttable>();
+        }
+
 
         // Rigidbody 가 없으면 XRGrabInteractable 도 없는 것으로 간주한다.
         if (rigid == null)
         {
-            gameObject.AddComponent<XRGrabInteractable>();
-            rigid = gameObject.GetComponent<Rigidbody>();
+            InitRigid();
         }
 
         for (int i = 0; i < transform.childCount; i++)
         {
             childs.Add(transform.GetChild(i));
         }
+    }
+
+    void InitRigid()
+    {
+        grabInteractable = gameObject.AddComponent<XRGrabInteractable>();
+        rigid = gameObject.GetComponent<Rigidbody>();
+
+        SelectEnterEvent activated = new SelectEnterEvent();
+        activated.AddListener((e) =>
+        {
+            OnGrabed();
+        });
+        grabInteractable.selectEntered = activated;
+
+        SelectExitEvent deactivated = new SelectExitEvent();
+        deactivated.AddListener((e) =>
+        {
+            print("hit");
+            OnUnGrabed();
+        });
+        grabInteractable.selectExited = deactivated;
+    }
+
+    void OnGrabed()
+    {
+
+    }
+
+    void OnUnGrabed()
+    {
+        print("Ungrab");
+        if (kochi == null) return;
+
+        Destroy(grabInteractable);
+        Destroy(rigid);
+
+        kochi.StickOn(this);
+        kochi = null;
     }
 
     public void Cut(int pieceNum)
@@ -79,8 +146,7 @@ public class FoodPiece : MonoBehaviour
         // Rigidbody 가 없으면 XRGrabInteractable 도 없는 것으로 간주한다.
         if (rigid == null)
         {
-            gameObject.AddComponent<XRGrabInteractable>();
-            rigid = gameObject.GetComponent<Rigidbody>();
+            InitRigid();
         }
         rigid.AddForce(force);
     }
@@ -107,6 +173,14 @@ public class FoodPiece : MonoBehaviour
             }
         }
 
-        return Piece.AddComponent<FoodPiece>();
+        FoodPiece foodPiece = Piece.AddComponent<FoodPiece>();
+
+        if (pieces.Count == 1)
+        {
+            foodPiece.isStickable = true;
+            foodPiece.transform.parent = null;
+        }
+
+        return foodPiece;
     }
 }
