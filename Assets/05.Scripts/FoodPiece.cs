@@ -19,13 +19,15 @@ public class FoodPiece : MonoBehaviour
 
     Kochi kochi;
 
+    Food.Type foodType;
+
     private void OnTriggerEnter(Collider other)
     {
         if (transform.childCount > 1) return;
 
         if (other.CompareTag(Tag.Pot))
         {
-            CookManager.Instance.OnCompleteWork(parentIngredient.foodType, Food.Action.PutInPot);
+            CookManager.Instance.OnCompleteWork(foodType, Food.Action.PutInPot);
         }
 
         if (other.CompareTag(Tag.Kochi))
@@ -56,6 +58,7 @@ public class FoodPiece : MonoBehaviour
         if (transform.childCount > 1)
         {
             parentIngredient = transform.parent.GetComponent<Cuttable>();
+            foodType = parentIngredient.foodType;
         }
 
 
@@ -180,6 +183,8 @@ public class FoodPiece : MonoBehaviour
             foodPiece.isStickable = true;
             foodPiece.transform.parent = null;
         }
+
+        foodPiece.foodType = foodType;
 
         return foodPiece;
     }
