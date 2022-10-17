@@ -19,7 +19,6 @@ public class Kochi : MonoBehaviour
 
     public void StickOn(FoodPiece piece)
     {
-        print("²ÅÀ½.");
         if (currPos >= foodPosList.Length) return;
 
         piece.transform.parent = foodPosList[currPos];

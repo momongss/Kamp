@@ -33,8 +33,6 @@ public class FoodPiece : MonoBehaviour
         if (other.CompareTag(Tag.Kochi))
         {
             kochi = other.GetComponent<Kochi>();
-
-            print("꽂을려고 시도함.");
         }
     }
 
@@ -42,11 +40,8 @@ public class FoodPiece : MonoBehaviour
     {
         if (other.CompareTag(Tag.Kochi))
         {
-            print("여기");
             if (kochi == other.GetComponent<Kochi>())
             {
-                print("꽂을려다 말았음.");
-
                 kochi = null;
             }
         }
@@ -89,7 +84,6 @@ public class FoodPiece : MonoBehaviour
         SelectExitEvent deactivated = new SelectExitEvent();
         deactivated.AddListener((e) =>
         {
-            print("hit");
             OnUnGrabed();
         });
         grabInteractable.selectExited = deactivated;
@@ -102,7 +96,6 @@ public class FoodPiece : MonoBehaviour
 
     void OnUnGrabed()
     {
-        print("Ungrab");
         if (kochi == null) return;
 
         Destroy(grabInteractable);
@@ -140,8 +133,6 @@ public class FoodPiece : MonoBehaviour
         }
 
         Destroy(gameObject);
-
-        parentIngredient.Cut();
     }
 
     public void AddForce(Vector3 force)
@@ -182,6 +173,8 @@ public class FoodPiece : MonoBehaviour
         {
             foodPiece.isStickable = true;
             foodPiece.transform.parent = null;
+
+            CookManager.Instance.OnCompleteWork(foodType, Food.Action.Cut);
         }
 
         foodPiece.foodType = foodType;

@@ -10,14 +10,14 @@ public class CookManager : MonoBehaviour
 
     public static CookManager Instance;
 
-    public UICookStepManager uICookStep;
+    public UICookStepManager uICookStepManager;
     public UISelectRecipe uISelectRecipe;
     public UIPanel uIComplete;
 
     public void SelectRecipe(Food.Type foodType, int count = 1)
     {
         uISelectRecipe.Hide();
-        uICookStep.StartCookStep(foodType, count);
+        uICookStepManager.StartCookStep(foodType, count);
         CookRespawnManager.I.Respawn(foodType, count);
     }
 
@@ -36,17 +36,17 @@ public class CookManager : MonoBehaviour
         {
             case State.Select:
                 uISelectRecipe.Show();
-                uICookStep.Hide();
+                uICookStepManager.Hide();
                 uIComplete.Hide();
                 break;
             case State.Cooking:
                 uISelectRecipe.Hide();
-                uICookStep.Show();
+                uICookStepManager.Show();
                 uIComplete.Hide();
                 break;
             case State.CompleteCooking:
                 uISelectRecipe.Hide();
-                uICookStep.Hide();
+                uICookStepManager.Hide();
                 uIComplete.Show();
                 break;
         }
@@ -54,7 +54,7 @@ public class CookManager : MonoBehaviour
 
     public void OnCompleteWork(Food.Type type, Food.Action action)
     {
-        uICookStep.OnCompleteWork(type, action);
+        uICookStepManager.OnCompleteWork(type, action);
     }
 
     public void OnCompleteCooking()

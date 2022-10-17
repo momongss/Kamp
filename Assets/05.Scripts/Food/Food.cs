@@ -6,41 +6,38 @@ public class Food : MonoBehaviour
 {
     public enum Type
     {
-        Multiple,
+        Multiple = 0,
 
-        Stew,
-        Cookie,
-        PorkBelly,
-        Marshmellow,
-        KoChi,
-        Friedrice,
+        Stew = 1,
+        Cookie = 2,
+        PorkBelly = 3,
+        Marshmellow = 4,
+        KoChi = 5,
+        Friedrice = 6,
 
-        Beef,
-        Tomato,
-        Onion,
-        Carrot,
-        Salt,
-        BlackPepper,
-        RedWine,
+        Beef = 7,
+        Tomato = 8,
+        Onion = 9,
+        Carrot = 10,
+        Salt = 11,
+        BlackPepper = 12,
+        RedWine = 13,
 
-        Test01,
-        Text02,
-        GreenOnion,
-        Chicken,
+        Test01 = 14,
+        Text02 = 15,
+        GreenOnion = 16,
+        Chicken = 17,
     };
 
     public enum Action
     {
-        Cut,
-        Roast,
-        Skewer,
-        Sprikle,
+        Cut = 0,
+        Roast = 1,
+        Skewer = 2,
+        Sprikle = 3,
 
-        PutInPot,
-        PutInWok,
-
-        Test01,
-        Test02
+        PutInPot = 5,
+        PutInWok = 6,
     }
 
     public Type type;

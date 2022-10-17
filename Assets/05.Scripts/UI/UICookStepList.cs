@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class UICookStepList : UIPanel
@@ -23,14 +24,7 @@ public class UICookStepList : UIPanel
         for (int i = 0; i < stepListParent.childCount; i++)
         {
             UICookStep step = stepListParent.GetChild(i).GetComponent<UICookStep>();
-            if (Food.canPerformedMultiTimes.Contains(step.action))
-            {
-                step.SetTotalStepCount(count);
-            }
-            else
-            {
-                step.SetTotalStepCount(1);
-            }
+            step.StartStep();
 
 
             stepList.Add(step);
@@ -56,6 +50,8 @@ public class UICookStepList : UIPanel
     {
         UICookStep step = stepList[currStep];
 
+        print($"{step.type}:{type}, {step.action}:{action}");
+
         if (!(step.type == type && step.action == action)) return;
 
         step.stepCount++;
@@ -63,6 +59,8 @@ public class UICookStepList : UIPanel
         {
             OnCompleteStep();
         }
+
+        print(step.stepCount);
     }
 
     // 지금 Step 과 Work 네이밍에 오류 존재함. 주의해야함.

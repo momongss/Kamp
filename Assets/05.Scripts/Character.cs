@@ -32,11 +32,6 @@ public class Character : MonoBehaviour
 
     Rigidbody rigid;
 
-    public void OnHovered()
-    {
-        print("Hovered");
-    }
-
     public void OnSelected()
     {
         float distance = Vector3.Distance(transform.position, Player.I.transform.position);

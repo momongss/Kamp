@@ -7,12 +7,19 @@ public class UICookStep : MonoBehaviour
     public Food.Type type;
     public Food.Action action;
 
+    [Range(1, 10)]
     public int totalStepCount;
     public int stepCount;
 
-    public void SetTotalStepCount(int count)
+    public Cookware myCookware;
+
+    public void StartStep()
     {
-        totalStepCount = count;
         stepCount = 0;
+
+        if (myCookware)
+        {
+            myCookware.AllocateWork(type, totalStepCount);
+        }
     }
 }

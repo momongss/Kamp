@@ -16,20 +16,4 @@ public class Cuttable : MonoBehaviour
     {
         requiredCutCount = transform.GetChild(0).childCount - 1;
     }
-
-    public void Cut()
-    {
-        currCutCount++;
-
-        if (currCutCount >= requiredCutCount)
-        {
-            OnCompleteCutting();
-        }
-    }
-
-    void OnCompleteCutting()
-    {
-        isCutCompleted = true;
-        CookManager.Instance.OnCompleteWork(foodType, Food.Action.Cut);
-    }
 }
