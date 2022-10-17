@@ -54,13 +54,13 @@ public class UICookStepList : UIPanel
 
         if (!(step.type == type && step.action == action)) return;
 
-        step.stepCount++;
-        if (step.stepCount >= step.totalStepCount)
+        step.workCount++;
+        if (step.workCount >= step.totalWorkCount)
         {
             OnCompleteStep();
         }
 
-        print(step.stepCount);
+        print(step.workCount);
     }
 
     // 지금 Step 과 Work 네이밍에 오류 존재함. 주의해야함.
