@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meat : MonoBehaviour
+public class MeatTwoSided : MonoBehaviour
 {
     public Food.Type foodType;
 
