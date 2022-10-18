@@ -7,8 +7,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class FoodPiece : MonoBehaviour
 {
-    bool isCutable = true;
-
+    public bool isCutable = true;
+    public bool isRoastable = false;
     public bool isStickable = false;
 
     List<Transform> childs = new List<Transform>();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Roastable : FoodPiece
 {
@@ -9,16 +10,19 @@ public class Roastable : FoodPiece
 
     public MeshRenderer meatRenderer;
 
-    bool isCooking = false;
+    public bool isCooking = false;
     bool isCompleted = false;
 
     Material mat;
     Collider currFire;
 
+    UnityEvent cookCompleteEvent = new UnityEvent();
+
     protected override void Awake()
     {
         base.Awake();
 
+        isRoastable = true;
         meatRenderer = GetComponentInChildren<MeshRenderer>();
         mat = meatRenderer.material;
     }
@@ -44,15 +48,23 @@ public class Roastable : FoodPiece
         }
     }
 
+    public void AddCookCompleteEvent(UnityAction action)
+    {
+        cookCompleteEvent.AddListener(action);
+    }
+
     void CompletedCooking()
     {
         print("¿Ï¼º!!");
 
+        cookCompleteEvent.Invoke();
         CookManager.Instance.OnCompleteWork(foodType, Food.Action.Roast);
     }
 
     protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
+
         if (other.CompareTag(Tag.Fire))
         {
             print("Å¸´ÚÅ¸´Ú");
@@ -63,6 +75,7 @@ public class Roastable : FoodPiece
 
     protected override void OnTriggerExit(Collider other)
     {
+        base.OnTriggerExit(other);
         if (other.CompareTag(Tag.Fire) && other == currFire)
         {
             isCooking = false;
