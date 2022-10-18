@@ -11,6 +11,7 @@ public class CookRespawnManager : MonoBehaviour
     public CookRespawn stewRespawn;
     public CookRespawn marshmellowRespawn;
     public CookRespawn test01Respawn;
+    public CookRespawn kochiRespawn;
 
     Dictionary<Food.Type, CookRespawn> cookDic;
 
@@ -24,6 +25,7 @@ public class CookRespawnManager : MonoBehaviour
         cookDic.Add(Food.Type.Stew, stewRespawn);
         cookDic.Add(Food.Type.Marshmellow, marshmellowRespawn);
         cookDic.Add(Food.Type.Test01, test01Respawn);
+        cookDic.Add(Food.Type.KoChi, kochiRespawn);
     }
 
     public void Respawn(Food.Type foodType, int count)

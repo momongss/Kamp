@@ -32,11 +32,6 @@ public class UICookStepManager : UIPanel
         currStep.StartStep(count);
     }
 
-    public void TEST__OnWorkDone()
-    {
-        OnCompleteWork(Food.Type.Cookie, Food.Action.Cut);
-    }
-
     public void OnCompleteWork(Food.Type type, Food.Action action)
     {
         if (currStep == null)

@@ -79,5 +79,6 @@ public class Kochi : MonoBehaviour
     void CompleteCooking()
     {
         print("꼬치가 구워졌다");
+        CookManager.Instance.OnCompleteWork(Food.Type.KoChi, Food.Action.Roast);
     }
 }

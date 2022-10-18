@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efc4471db68316479d2763dda7dd512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: 14
+  foodType: 7
 --- !u!1001 &7523405484561889581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,8 +134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b26cc28a2613ea43a0f3e646a1db059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCutable: 1
+  isRoastable: 0
   isStickable: 0
   foodType: 0
+  cookTime: 15
+  currCookTime: 0
+  meatRenderer: {fileID: 0}
+  isCooking: 0
 --- !u!4 &6200417195558420980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4495947008740341977, guid: d669e7ed27813a040833b5d955f1259f,

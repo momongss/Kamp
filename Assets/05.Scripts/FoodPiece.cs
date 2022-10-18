@@ -98,11 +98,15 @@ public class FoodPiece : MonoBehaviour
     {
         if (kochi == null) return;
 
+        // ²¿Ä¡¿¡ ²ÈÈû.
+
         Destroy(grabInteractable);
         Destroy(rigid);
 
         kochi.StickOn(this);
         kochi = null;
+
+        CookManager.Instance.OnCompleteWork(foodType, Food.Action.Skewer);
     }
 
     public void Cut(int pieceNum)

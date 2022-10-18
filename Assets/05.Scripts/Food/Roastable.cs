@@ -37,7 +37,7 @@ public class Roastable : FoodPiece
             {
                 switch (foodType)
                 {
-                    case Food.Type.Test01:
+                    case Food.Type.Beef:
                         mat.mainTexture = TexturePack.Instance.meatDemoCooked;
                         break;
                 }
