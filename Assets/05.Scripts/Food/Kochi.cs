@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Kochi : MonoBehaviour
 {
-    public Transform foodPosListParent;
+    public Food.Type foodType;
 
+    public Transform foodPosListParent;
     public Transform[] foodPosList;
 
     int currPos;
+
+    public bool isStickOnAll = false;
 
     private void Awake()
     {
@@ -23,5 +26,13 @@ public class Kochi : MonoBehaviour
 
         piece.transform.parent = foodPosList[currPos];
         currPos++;
+
+        if (currPos == foodPosList.Length)
+        {
+            isStickOnAll = true;
+        }
+
+        MeshRenderer renderer = piece.GetComponentInChildren<MeshRenderer>();
+        print(renderer);
     }
 }

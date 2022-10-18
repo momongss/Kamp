@@ -19,9 +19,9 @@ public class FoodPiece : MonoBehaviour
 
     Kochi kochi;
 
-    Food.Type foodType;
+    public Food.Type foodType;
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (transform.childCount > 1) return;
 
@@ -36,7 +36,7 @@ public class FoodPiece : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(Tag.Kochi))
         {
@@ -47,7 +47,7 @@ public class FoodPiece : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // FoodPiece 가 자를 수 있다면(piece 가 1개 이상) Cuttable 자식으로 존재하는 걸로 가정한다.
         if (transform.childCount > 1)
@@ -167,7 +167,7 @@ public class FoodPiece : MonoBehaviour
             }
         }
 
-        FoodPiece foodPiece = Piece.AddComponent<FoodPiece>();
+        FoodPiece foodPiece = foodPiecarize(Piece);
 
         if (pieces.Count == 1)
         {
@@ -180,5 +180,10 @@ public class FoodPiece : MonoBehaviour
         foodPiece.foodType = foodType;
 
         return foodPiece;
+    }
+
+    protected virtual FoodPiece foodPiecarize(GameObject Piece)
+    {
+        return Piece.AddComponent<FoodPiece>();
     }
 }
