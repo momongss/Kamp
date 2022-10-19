@@ -37,6 +37,7 @@ public class Tag
     public const string Pot = "Pot";
     public const string FoodPiece = "FoodPiece";
     public const string Kochi = "Kochi";
+    public const string Terrain = "Terrain";
 }
 
 public class Scene
