@@ -19,6 +19,7 @@ public class UICookStepManager : UIPanel
         foreach (var t in Utils.GetChildren(transform))
         {
             UICookStepList stepList = t.GetComponent<UICookStepList>();
+            StepUIList.Add(stepList);
             stepListDic.Add(stepList.cookType, stepList);
         }
     }

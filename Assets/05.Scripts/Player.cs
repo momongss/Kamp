@@ -10,15 +10,4 @@ public class Player : MonoBehaviour
     {
         I = this;
     }
-
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
 }

@@ -50,7 +50,7 @@ public class UICookStepList : UIPanel
     {
         UICookStep step = stepList[currStep];
 
-        print($"{step.type}:{type}, {step.action}:{action}");
+        // print($"{step.type}:{type}, {step.action}:{action}");
 
         if (!(step.type == type && step.action == action)) return;
 
@@ -59,14 +59,12 @@ public class UICookStepList : UIPanel
         {
             OnCompleteStep();
         }
-
-        print(step.workCount);
     }
 
     // 지금 Step 과 Work 네이밍에 오류 존재함. 주의해야함.
     public void OnCompleteStep()
     {
-        print($"{currStep}, {stepCount}");
+        // print($"{currStep}, {stepCount}");
         if (currStep >= stepCount)
         {
             Debug.LogWarning("step 오류 발생. step 로직 확인필요");
