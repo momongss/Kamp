@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7517549319329480235}
   - component: {fileID: 7517549319329480228}
   m_Layer: 0
-  m_Name: KinematicCube
+  m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 62cf94672c1d443478bc58589d565116, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cfdf5e07c2ed1574486358437701e830, type: 2}
+      objectReference: {fileID: 2100000, guid: cfb0bb399d2114a4a86571753c68adf1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62cf94672c1d443478bc58589d565116, type: 3}
 --- !u!1 &1056488931 stripped
