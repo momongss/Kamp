@@ -17,7 +17,6 @@ public class SpawnBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print($"coll {isThrowed} {collision.collider.CompareTag(Tag.Terrain)}");
         if (isThrowed && collision.collider.CompareTag(Tag.Terrain))
         {
             isThrowed = false;

@@ -15,6 +15,7 @@ TagManager:
   - FoodPiece
   - Kochi
   - Terrain
+  - PhyicsButton
   layers:
   - Default
   - TransparentFX
