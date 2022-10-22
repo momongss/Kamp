@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meat : MonoBehaviour
+public class Meat : Food
 {
-    public Food.Type foodType;
-
     public float cookTime = 15f;
     public float currCookTime = 0f;
 
@@ -55,7 +53,7 @@ public class Meat : MonoBehaviour
         if (PS_cookSmoke) PS_cookSmoke.Stop();
         if (PS_complete) PS_complete.Play();
 
-        CookManager.Instance.OnCompleteWork(foodType, Food.Action.Roast);
+        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
     }
 
     private void OnTriggerEnter(Collider other)

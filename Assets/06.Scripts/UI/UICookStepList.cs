@@ -46,15 +46,19 @@ public class UICookStepList : UIPanel
         stepList[step].gameObject.SetActive(true);
     }
 
-    public void OnCompleteWork(Food.Type type, Food.Action action)
+    public void OnCompleteWork(Food food, Food.Action action)
     {
         UICookStep step = stepList[currStep];
 
         // print($"{step.type}:{type}, {step.action}:{action}");
 
-        if (!(step.type == type && step.action == action)) return;
+        print($"ee {step.type} {food.foodType} {step.action} {action}");
+
+        if (!(step.type == food.foodType && step.action == action)) return;
 
         step.workCount++;
+
+        print($"{step.workCount} {step.totalWorkCount}");
         if (step.workCount >= step.totalWorkCount)
         {
             OnCompleteStep();

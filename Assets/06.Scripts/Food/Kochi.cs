@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Kochi : Food
 {
-    public Food.Type foodType;
-
     public Transform foodPosListParent;
     public Transform[] foodPosList;
 
@@ -14,6 +12,8 @@ public class Kochi : Food
     public bool isStickOnAll = false;
 
     List<Roastable> roastableList = new List<Roastable>();
+
+    bool isRoasted = false;
 
     private void Awake()
     {
@@ -72,7 +72,9 @@ public class Kochi : Food
 
     void CompleteCooking()
     {
-        print("꼬치가 구워졌다");
-        CookManager.Instance.OnCompleteWork(Food.Type.KoChi, Food.Action.Roast);
+        if (isRoasted) return;
+        isRoasted = true;
+
+        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
     }
 }

@@ -12,11 +12,11 @@ public class Roastable : FoodPiece
 
     MeshFilter myMeshFilter;
     public MeshFilter cookedMeshFilter;
+    Material mat;
 
     public bool isCooking = false;
     bool isCompleted = false;
 
-    Material mat;
     Collider currFire;
 
     UnityEvent cookCompleteEvent = new UnityEvent();
@@ -64,9 +64,8 @@ public class Roastable : FoodPiece
 
     void CompletedCooking()
     {
-        print("¿Ï¼º!!");
         cookCompleteEvent.Invoke();
-        CookManager.Instance.OnCompleteWork(foodType, Food.Action.Roast);
+        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -75,7 +74,6 @@ public class Roastable : FoodPiece
 
         if (other.CompareTag(Tag.Fire))
         {
-            print("Å¸´ÚÅ¸´Ú");
             isCooking = true;
             currFire = other;
         }

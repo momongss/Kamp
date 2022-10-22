@@ -28,8 +28,6 @@ public class TexturePack : MonoBehaviour
         // 꼬치 조각의 이름은 "0", "1", "2" 여야한다.\
         string meshName = Utils.RemoveLastWord(kochiMeatPiece.name);
 
-        print(meshName);
-
         if (meshName == Kochi_Meat_0.name)
         {
             return Kochi_Meat_Cooked_0;

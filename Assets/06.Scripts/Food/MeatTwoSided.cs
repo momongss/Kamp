@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeatTwoSided : MonoBehaviour
+public class MeatTwoSided : Food
 {
-    public Food.Type foodType;
-
     public float cookTime = 15f;
     public float currCookTimeUP = 0f;
     public float currCookTimeDown = 0f;
@@ -89,7 +87,7 @@ public class MeatTwoSided : MonoBehaviour
         PS_cookSmoke.Stop();
         PS_complete.Play();
 
-        CookManager.Instance.OnCompleteWork(foodType, Food.Action.Roast);
+        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
     }
 
     private void OnTriggerEnter(Collider other)

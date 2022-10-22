@@ -33,14 +33,14 @@ public class UICookStepManager : UIPanel
         currStep.StartStep(count);
     }
 
-    public void OnCompleteWork(Food.Type type, Food.Action action)
+    public void OnCompleteWork(Food food, Food.Action action)
     {
         if (currStep == null)
         {
             return;
         }
 
-        currStep.OnCompleteWork(type, action);
+        currStep.OnCompleteWork(food, action);
     }
 
     public void OnCompleteAllStep()

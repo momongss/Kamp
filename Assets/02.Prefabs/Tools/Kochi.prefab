@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd643e5288d08914e8c45ff1824844c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: 0
+  foodType: 5
   foodPosListParent: {fileID: 1593873649}
   foodPosList: []
   isStickOnAll: 0

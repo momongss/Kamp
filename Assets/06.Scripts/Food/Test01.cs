@@ -8,7 +8,7 @@ public class Test01 : Cuttable
     {
         if (isCutCompleted && other.CompareTag(Tag.Pot))
         {
-            CookManager.Instance.OnCompleteWork(foodType, Food.Action.PutInPot);
+            CookManager.Instance.OnCompleteWork(this, Food.Action.PutInPot);
         }
     }
 }

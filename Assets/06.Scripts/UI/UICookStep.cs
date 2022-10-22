@@ -11,15 +11,8 @@ public class UICookStep : MonoBehaviour
     public int totalWorkCount;
     public int workCount;
 
-    public Cookware myCookware;
-
     public void StartStep()
     {
         workCount = 0;
-
-        if (myCookware)
-        {
-            myCookware.AllocateWork(type, totalWorkCount);
-        }
     }
 }

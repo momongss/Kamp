@@ -52,9 +52,9 @@ public class CookManager : MonoBehaviour
         }
     }
 
-    public void OnCompleteWork(Food.Type type, Food.Action action)
+    public void OnCompleteWork(Food food, Food.Action action)
     {
-        uICookStepManager.OnCompleteWork(type, action);
+        uICookStepManager.OnCompleteWork(food, action);
     }
 
     public void OnCompleteCooking()

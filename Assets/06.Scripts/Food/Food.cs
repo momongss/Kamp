@@ -42,7 +42,6 @@ public class Food : MonoBehaviour
         PutInWok = 6,
     }
 
-    public Type type;
+    public Type foodType;
     public static HashSet<Action> canPerformedMultiTimes = new HashSet<Action>() { Action.Cut, Action.Roast, Action.Skewer };
-    public static HashSet<Action> isRoastable = new HashSet<Action>() { };
 }

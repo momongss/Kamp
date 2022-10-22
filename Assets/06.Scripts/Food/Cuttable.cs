@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cuttable : MonoBehaviour
+public class Cuttable : Food
 {
-    public Food.Type foodType;
-
     int requiredCutCount;
     int currCutCount = 0;
 

@@ -5,7 +5,7 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class FoodPiece : MonoBehaviour
+public class FoodPiece : Food
 {
     public bool isCutable = true;
     public bool isRoastable = false;
@@ -19,15 +19,13 @@ public class FoodPiece : MonoBehaviour
 
     Kochi kochi;
 
-    public Food.Type foodType;
-
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (transform.childCount > 1) return;
 
         if (other.CompareTag(Tag.Pot))
         {
-            CookManager.Instance.OnCompleteWork(foodType, Food.Action.PutInPot);
+            CookManager.Instance.OnCompleteWork(this, Food.Action.PutInPot);
         }
 
         if (other.CompareTag(Tag.Kochi))
@@ -106,7 +104,7 @@ public class FoodPiece : MonoBehaviour
         kochi.StickOn(this);
         kochi = null;
 
-        CookManager.Instance.OnCompleteWork(foodType, Food.Action.Skewer);
+        CookManager.Instance.OnCompleteWork(this, Food.Action.Skewer);
     }
 
     public void Cut(int pieceNum)
@@ -178,7 +176,7 @@ public class FoodPiece : MonoBehaviour
             foodPiece.isStickable = true;
             foodPiece.transform.parent = null;
 
-            CookManager.Instance.OnCompleteWork(foodType, Food.Action.Cut);
+            CookManager.Instance.OnCompleteWork(this, Food.Action.Cut);
         }
 
         foodPiece.foodType = foodType;
