@@ -17,8 +17,6 @@ public class FoodPiece : Food
 
     Cuttable parentIngredient;
 
-    Kochi kochi;
-
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (transform.childCount > 1) return;
@@ -26,22 +24,6 @@ public class FoodPiece : Food
         if (other.CompareTag(Tag.Pot))
         {
             CookManager.Instance.OnCompleteWork(this, Food.Action.PutInPot);
-        }
-
-        if (other.CompareTag(Tag.Kochi))
-        {
-            kochi = other.GetComponent<Kochi>();
-        }
-    }
-
-    protected virtual void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(Tag.Kochi))
-        {
-            if (kochi == other.GetComponent<Kochi>())
-            {
-                kochi = null;
-            }
         }
     }
 
@@ -94,15 +76,15 @@ public class FoodPiece : Food
 
     void OnUnGrabed()
     {
-        if (kochi == null) return;
 
-        // ²¿Ä¡¿¡ ²ÈÈû.
+    }
+
+    public void StickedOn()
+    {
+        if (transform.childCount > 1) return;
 
         Destroy(grabInteractable);
         Destroy(rigid);
-
-        kochi.StickOn(this);
-        kochi = null;
 
         CookManager.Instance.OnCompleteWork(this, Food.Action.Skewer);
     }

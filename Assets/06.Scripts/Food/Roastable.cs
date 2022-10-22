@@ -79,9 +79,8 @@ public class Roastable : FoodPiece
         }
     }
 
-    protected override void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
-        base.OnTriggerExit(other);
         if (other.CompareTag(Tag.Fire) && other == currFire)
         {
             isCooking = false;

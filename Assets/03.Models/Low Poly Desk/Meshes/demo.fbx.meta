@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 05628b3d1dd9dc7489c4fc47e9e0e9b5
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: chair002
+    100002: computer002
+    100004: //RootNode
+    100006: keyboard_lp002
+    100008: laptop_lp002
+    100010: light002
+    100012: light003
+    100014: mouse_lp002
+    100016: mouse_pad002
+    100018: mug002
+    100020: mug003
+    100022: mug004
+    100024: mug005
+    100026: pen002
+    100028: pen003
+    100030: pen004
+    100032: pen005
+    100034: phone002
+    100036: plant_002
+    100038: ruler002
+    100040: screen002
+    100042: sol
+    100044: table002
+    400000: chair002
+    400002: computer002
+    400004: //RootNode
+    400006: keyboard_lp002
+    400008: laptop_lp002
+    400010: light002
+    400012: light003
+    400014: mouse_lp002
+    400016: mouse_pad002
+    400018: mug002
+    400020: mug003
+    400022: mug004
+    400024: mug005
+    400026: pen002
+    400028: pen003
+    400030: pen004
+    400032: pen005
+    400034: phone002
+    400036: plant_002
+    400038: ruler002
+    400040: screen002
+    400042: sol
+    400044: table002
+    2100000: 03 - Default
+    2100002: 01 - Default
+    2100004: 02 - Default
+    2300000: chair002
+    2300002: computer002
+    2300004: keyboard_lp002
+    2300006: laptop_lp002
+    2300008: light002
+    2300010: light003
+    2300012: mouse_lp002
+    2300014: mouse_pad002
+    2300016: mug002
+    2300018: mug003
+    2300020: mug004
+    2300022: mug005
+    2300024: pen002
+    2300026: pen003
+    2300028: pen004
+    2300030: pen005
+    2300032: phone002
+    2300034: plant_002
+    2300036: ruler002
+    2300038: screen002
+    2300040: sol
+    2300042: table002
+    3300000: chair002
+    3300002: computer002
+    3300004: keyboard_lp002
+    3300006: laptop_lp002
+    3300008: light002
+    3300010: light003
+    3300012: mouse_lp002
+    3300014: mouse_pad002
+    3300016: mug002
+    3300018: mug003
+    3300020: mug004
+    3300022: mug005
+    3300024: pen002
+    3300026: pen003
+    3300028: pen004
+    3300030: pen005
+    3300032: phone002
+    3300034: plant_002
+    3300036: ruler002
+    3300038: screen002
+    3300040: sol
+    3300042: table002
+    4300000: sol
+    4300002: plant_002
+    4300004: pen005
+    4300006: pen004
+    4300008: mug005
+    4300010: mug004
+    4300012: light003
+    4300014: mug003
+    4300016: pen003
+    4300018: keyboard_lp002
+    4300020: computer002
+    4300022: laptop_lp002
+    4300024: mug002
+    4300026: mouse_lp002
+    4300028: pen002
+    4300030: table002
+    4300032: chair002
+    4300034: screen002
+    4300036: phone002
+    4300038: light002
+    4300040: ruler002
+    4300042: mouse_pad002
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

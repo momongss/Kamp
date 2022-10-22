@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 6f5491f6632829a4ea5e6f8f88593d60
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: chair
+    100004: computer
+    100006: desk_lamp
+    100008: ground
+    100010: keyboard
+    100012: laptop
+    100014: mouse
+    100016: mouse_pad
+    100018: mug
+    100020: pen
+    100022: phone
+    100024: plant
+    100026: ruler
+    100028: screen
+    100030: table
+    400000: //RootNode
+    400002: chair
+    400004: computer
+    400006: desk_lamp
+    400008: ground
+    400010: keyboard
+    400012: laptop
+    400014: mouse
+    400016: mouse_pad
+    400018: mug
+    400020: pen
+    400022: phone
+    400024: plant
+    400026: ruler
+    400028: screen
+    400030: table
+    2100000: 03 - Default
+    2100002: 01 - Default
+    2100004: 02 - Default
+    2300000: chair
+    2300002: computer
+    2300004: desk_lamp
+    2300006: ground
+    2300008: keyboard
+    2300010: laptop
+    2300012: mouse
+    2300014: mouse_pad
+    2300016: mug
+    2300018: pen
+    2300020: phone
+    2300022: plant
+    2300024: ruler
+    2300026: screen
+    2300028: table
+    3300000: chair
+    3300002: computer
+    3300004: desk_lamp
+    3300006: ground
+    3300008: keyboard
+    3300010: laptop
+    3300012: mouse
+    3300014: mouse_pad
+    3300016: mug
+    3300018: pen
+    3300020: phone
+    3300022: plant
+    3300024: ruler
+    3300026: screen
+    3300028: table
+    4300000: ground
+    4300002: plant
+    4300004: table
+    4300006: screen
+    4300008: phone
+    4300010: mouse_pad
+    4300012: chair
+    4300014: desk_lamp
+    4300016: ruler
+    4300018: computer
+    4300020: laptop
+    4300022: mug
+    4300024: mouse
+    4300026: pen
+    4300028: keyboard
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
