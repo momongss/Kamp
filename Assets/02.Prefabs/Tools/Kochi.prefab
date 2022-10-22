@@ -234,8 +234,7 @@ GameObject:
   - component: {fileID: 7923830015172231275}
   - component: {fileID: 6914467469351185066}
   - component: {fileID: 967396114}
-  - component: {fileID: 967396111}
-  - component: {fileID: 967396115}
+  - component: {fileID: 5054140010635871950}
   - component: {fileID: 967396118}
   m_Layer: 0
   m_Name: Kochi
@@ -276,6 +275,7 @@ MonoBehaviour:
   foodType: 5
   foodPosListParent: {fileID: 1593873649}
   foodPosList: []
+  collisionColl: {fileID: 5054140010635871950}
   isStickOnAll: 0
 --- !u!54 &967396114
 Rigidbody:
@@ -293,21 +293,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &967396111
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4434818824360388653}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 2.54
-  m_Direction: 0
-  m_Center: {x: -1.14, y: 0, z: 0}
---- !u!65 &967396115
+--- !u!65 &5054140010635871950
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,8 +304,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4, y: 0.1, z: 0.1}
-  m_Center: {x: -0.9, y: 0, z: 0}
+  m_Size: {x: 0.1, y: 0.1, z: 2.4}
+  m_Center: {x: 0, y: 0, z: 0.72}
 --- !u!114 &967396118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,10 +348,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6914467469351185066}
+        m_TargetAssemblyTypeName: Kochi, Assembly-CSharp
+        m_MethodName: OnGrabbed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6914467469351185066}
+        m_TargetAssemblyTypeName: Kochi, Assembly-CSharp
+        m_MethodName: OnUnGrabbed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -455,7 +465,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.869
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
@@ -465,27 +475,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.49999994
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.50000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.50000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.49999997
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
@@ -500,7 +510,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: c052edda5a371d7419bd2c158ab707fe,
         type: 3}

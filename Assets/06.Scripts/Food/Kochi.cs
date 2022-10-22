@@ -7,6 +7,8 @@ public class Kochi : Food
     public Transform foodPosListParent;
     public Transform[] foodPosList;
 
+    public Collider collisionColl;
+
     int currPos;
 
     public bool isStickOnAll = false;
@@ -15,6 +17,8 @@ public class Kochi : Food
 
     bool isRoasted = false;
 
+    FoodPiece currPiece;
+
     private void Awake()
     {
         foodPosList = Utils.GetChildren(foodPosListParent);
@@ -22,11 +26,55 @@ public class Kochi : Food
         currPos = 0;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Tag.Fire))
+        {
+            foreach (var r in roastableList)
+            {
+                r.isCooking = true;
+            }
+        }
+        else if (other.CompareTag(Tag.FoodPiece))
+        {
+            currPiece = other.GetComponent<FoodPiece>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(Tag.Fire))
+        {
+            foreach (var r in roastableList)
+            {
+                r.isCooking = false;
+            }
+        }
+        else if (other.CompareTag(Tag.FoodPiece))
+        {
+            currPiece = null;
+        }
+    }
+
+    public void OnGrabbed()
+    {
+        collisionColl.isTrigger = true;
+    }
+
+    public void OnUnGrabbed()
+    {
+        if (currPiece == null) return;
+
+        StickOn(currPiece);
+
+        collisionColl.isTrigger = false;
+    }
+
     public void StickOn(FoodPiece piece)
     {
-        print(piece);
-
         if (currPos >= foodPosList.Length) return;
+
+        piece.StickedOn();
 
         piece.transform.parent = foodPosList[currPos];
         currPos++;
@@ -45,28 +93,6 @@ public class Kochi : Food
             });
 
             roastableList.Add(roastable);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(Tag.Fire))
-        {
-            foreach (var r in roastableList)
-            {
-                r.isCooking = true;
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(Tag.Fire))
-        {
-            foreach (var r in roastableList)
-            {
-                r.isCooking = false;
-            }
         }
     }
 

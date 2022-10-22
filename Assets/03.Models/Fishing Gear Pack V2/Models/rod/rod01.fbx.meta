@@ -1,0 +1,253 @@
+fileFormatVersion: 2
+guid: c9712c83944dea74eaf9ec767043c014
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: joint1
+    100002: joint10
+    100004: joint11
+    100006: joint12
+    100008: joint13
+    100010: joint14
+    100012: joint15
+    100014: joint16
+    100016: joint17
+    100018: joint18
+    100020: joint19
+    100022: joint2
+    100024: joint20
+    100026: joint21
+    100028: joint22
+    100030: joint23
+    100032: joint24
+    100034: joint25
+    100036: joint26
+    100038: joint27
+    100040: joint28
+    100042: joint29
+    100044: joint3
+    100046: joint30
+    100048: joint31
+    100050: joint32
+    100052: joint33
+    100054: joint34
+    100056: joint35
+    100058: joint36
+    100060: joint37
+    100062: joint38
+    100064: joint39
+    100066: joint4
+    100068: joint40
+    100070: joint41
+    100072: joint42
+    100074: joint43
+    100076: joint44
+    100078: joint45
+    100080: joint46
+    100082: joint47
+    100084: joint48
+    100086: joint49
+    100088: joint5
+    100090: joint50
+    100092: joint51
+    100094: joint52
+    100096: joint53
+    100098: joint54
+    100100: joint55
+    100102: joint56
+    100104: joint57
+    100106: joint58
+    100108: joint6
+    100110: joint7
+    100112: joint8
+    100114: joint9
+    100116: //RootNode
+    100118: rodGripMain
+    100120: rodRings
+    100122: sel
+    100124: sel1
+    100126: sel2
+    100128: rodStick
+    100130: rodRings1
+    400000: joint1
+    400002: joint10
+    400004: joint11
+    400006: joint12
+    400008: joint13
+    400010: joint14
+    400012: joint15
+    400014: joint16
+    400016: joint17
+    400018: joint18
+    400020: joint19
+    400022: joint2
+    400024: joint20
+    400026: joint21
+    400028: joint22
+    400030: joint23
+    400032: joint24
+    400034: joint25
+    400036: joint26
+    400038: joint27
+    400040: joint28
+    400042: joint29
+    400044: joint3
+    400046: joint30
+    400048: joint31
+    400050: joint32
+    400052: joint33
+    400054: joint34
+    400056: joint35
+    400058: joint36
+    400060: joint37
+    400062: joint38
+    400064: joint39
+    400066: joint4
+    400068: joint40
+    400070: joint41
+    400072: joint42
+    400074: joint43
+    400076: joint44
+    400078: joint45
+    400080: joint46
+    400082: joint47
+    400084: joint48
+    400086: joint49
+    400088: joint5
+    400090: joint50
+    400092: joint51
+    400094: joint52
+    400096: joint53
+    400098: joint54
+    400100: joint55
+    400102: joint56
+    400104: joint57
+    400106: joint58
+    400108: joint6
+    400110: joint7
+    400112: joint8
+    400114: joint9
+    400116: //RootNode
+    400118: rodGripMain
+    400120: rodRings
+    400122: sel
+    400124: sel1
+    400126: sel2
+    400128: rodStick
+    400130: rodRings1
+    2100000: rod_grip
+    2100002: rod_stick
+    2300000: rodGripMain
+    2300002: sel
+    2300004: sel1
+    2300006: sel2
+    2300008: rodRings1
+    2300010: rodStick
+    3300000: rodGripMain
+    3300002: sel
+    3300004: sel1
+    3300006: sel2
+    3300008: rodRings1
+    3300010: rodStick
+    4300000: sel2
+    4300002: sel
+    4300004: sel1
+    4300006: rodRings
+    4300008: rodGripMain
+    4300010: rodStick
+    4300012: rodRings1
+    9500000: //RootNode
+    13700000: rodRings
+    13700002: rodStick
+    13700004: rodGripMain
+    13700006: rodRings1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rod_grip
+    second: {fileID: 2100000, guid: fa57505b83eb93f4dbfd3fa0c04c283a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rod_stick
+    second: {fileID: 2100000, guid: 1d4bdf9fef5aa4d4f852c7df5c871c06, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
