@@ -27,9 +27,9 @@ public class Roastable : FoodPiece
 
         isRoastable = true;
         meatRenderer = GetComponentInChildren<MeshRenderer>();
-        mat = meatRenderer.material;
+        myMeshFilter = GetComponentInChildren<MeshFilter>();
 
-        // myMeshFilter = GetComponent<Mesh>
+        mat = meatRenderer.material;
     }
 
     void Update()
@@ -44,7 +44,10 @@ public class Roastable : FoodPiece
                 {
                     case Food.Type.Beef:
                         // mat.mainTexture = TexturePack.Instance.meatDemoCooked;
-                        // meshFilter.mesh.uv = cookedMeshFilter.mesh.uv;
+                        // myMeshFilter.mesh.uv = TexturePack.Instance.Kochi_Meat_Cooked.mesh.uv;
+                        break;
+                    case Food.Type.KoChiMeat:
+                        myMeshFilter.mesh = TexturePack.Instance.GetKochiMesh(myMeshFilter.mesh);
                         break;
                 }
 
@@ -62,7 +65,6 @@ public class Roastable : FoodPiece
     void CompletedCooking()
     {
         print("¿Ï¼º!!");
-
         cookCompleteEvent.Invoke();
         CookManager.Instance.OnCompleteWork(foodType, Food.Action.Roast);
     }

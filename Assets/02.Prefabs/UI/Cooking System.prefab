@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdd3a9d386fc774e9da4c96baa4e1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uICookStep: {fileID: 833992688503905087}
+  state: 0
+  uICookStepManager: {fileID: 0}
   uISelectRecipe: {fileID: 833992686657815840}
+  uIComplete: {fileID: 0}
 --- !u!1 &6036313874993296658
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,15 +512,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4215856565786075448}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &833992688503905087 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3536263435012618759, guid: 23f868cc53dad63428d3b810dccafb59,
-    type: 3}
-  m_PrefabInstance: {fileID: 4215856565786075448}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78415bcd915b90448acef2cca3ca4bfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

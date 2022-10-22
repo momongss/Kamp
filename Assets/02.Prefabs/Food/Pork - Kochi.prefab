@@ -69,7 +69,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749002448481305703}
-  m_LocalRotation: {x: -0, y: -0.70483994, z: -0, w: 0.7093664}
+  m_LocalRotation: {x: 0, y: -0.70483845, z: 0, w: 0.7093679}
   m_LocalPosition: {x: 1.64, y: 1.04, z: -1.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767771b91c4c8044d93e93fc6e002f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: 3
+  foodType: 18
 --- !u!1 &749002449796031498
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,11 +256,11 @@ MonoBehaviour:
   isCutable: 1
   isRoastable: 0
   isStickable: 0
-  foodType: 0
+  foodType: 18
   cookTime: 15
   currCookTime: 0
   meatRenderer: {fileID: 0}
-  meshFilter: {fileID: 0}
+  cookedMeshFilter: {fileID: 0}
   isCooking: 0
 --- !u!4 &746742860522369273 stripped
 Transform:

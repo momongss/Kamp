@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 
@@ -8,6 +10,21 @@ public class Utils
     public static bool isTargetOnLeft(Transform origin, Transform target)
     {
         return false;
+    }
+
+    public static string RemoveLastWord(string name)
+    {
+        for (int i = name.Length - 1; i >= 0; i--)
+        {
+            if (Char.IsWhiteSpace(name[i]))
+            {
+                return name.Substring(0, i);
+            }
+        }
+
+        Debug.LogWarning($"{name} 한 단어임");
+
+        return name;
     }
 
     public static Collider RayCast(Vector3 origin, Vector3 dir, int layerMask = ~0)

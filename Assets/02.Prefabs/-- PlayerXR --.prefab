@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 94441444984850570}
   - component: {fileID: 94441444984850571}
   - component: {fileID: 94441444984850613}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: RightBaseController
   m_TagString: Untagged
   m_Icon: {fileID: 0}

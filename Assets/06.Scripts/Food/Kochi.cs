@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kochi : MonoBehaviour
+public class Kochi : Food
 {
     public Food.Type foodType;
 
@@ -12,9 +12,6 @@ public class Kochi : MonoBehaviour
     int currPos;
 
     public bool isStickOnAll = false;
-
-    int totalRoastableCount = 0;
-    int cookedRoastableCount = 0;
 
     List<Roastable> roastableList = new List<Roastable>();
 
@@ -39,14 +36,11 @@ public class Kochi : MonoBehaviour
             isStickOnAll = true;
         }
 
-        totalRoastableCount++;
-
         if (piece.isRoastable)
         {
             Roastable roastable = (Roastable)piece;
             roastable.AddCookCompleteEvent(() =>
             {
-                cookedRoastableCount++;
                 CompleteCooking();
             });
 

@@ -27,6 +27,8 @@ public class Food : MonoBehaviour
         Text02 = 15,
         GreenOnion = 16,
         Chicken = 17,
+
+        KoChiMeat = 18,
     };
 
     public enum Action
