@@ -10,8 +10,9 @@ public class Cuttable : Food
 
     protected bool isCutCompleted = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         requiredCutCount = transform.GetChild(0).childCount - 1;
     }
 }

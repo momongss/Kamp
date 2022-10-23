@@ -24,6 +24,11 @@ public class UICookStepManager : UIPanel
         }
     }
 
+    public void ResetCookStep()
+    {
+        CookManager.Instance.SetState(CookManager.State.Select);
+    }
+
     public void StartCookStep(Food.Type foodType, int count)
     {
         Show();

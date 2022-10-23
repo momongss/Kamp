@@ -4,6 +4,34 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
+    public bool hasRigidbody = true;
+    public Rigidbody rigid;
+
+    protected virtual void Awake()
+    {
+        gameObject.tag = Tag.Food;
+        if (hasRigidbody && rigid == null)
+        {
+            rigid = GetComponent<Rigidbody>();
+            if (rigid == null)
+            {
+                rigid = gameObject.AddComponent<Rigidbody>();
+            }
+        }
+    }
+
+    bool hasFloatingFood = false;
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Tag.Pot) && hasFloatingFood == false)
+        {
+            hasFloatingFood = true;
+
+            gameObject.AddComponent<FloatingFood>();
+        }
+    }
+
     public enum Type
     {
         Multiple = 0,

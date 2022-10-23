@@ -90,8 +90,10 @@ public class MeatTwoSided : Food
         CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
+
         if (other.CompareTag(Tag.Fire))
         {
             isCooked = true;
