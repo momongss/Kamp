@@ -9,7 +9,6 @@ public class Food : MonoBehaviour
 
     protected virtual void Awake()
     {
-        gameObject.tag = Tag.Food;
         if (hasRigidbody && rigid == null)
         {
             rigid = GetComponent<Rigidbody>();
@@ -28,7 +27,8 @@ public class Food : MonoBehaviour
         {
             hasFloatingFood = true;
 
-            gameObject.AddComponent<FloatingFood>();
+            FloatingFood _f = gameObject.AddComponent<FloatingFood>();
+            _f.pot = other.GetComponent<Pot>(); ;
         }
     }
 

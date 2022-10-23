@@ -16,6 +16,8 @@ TagManager:
   - Kochi
   - Terrain
   - PhyicsButton
+  - PotTop
+  - PotBotton
   layers:
   - Default
   - TransparentFX

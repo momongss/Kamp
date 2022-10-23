@@ -29,7 +29,7 @@ public class FoodPiece : Food
             CookManager.Instance.OnCompleteWork(this, Action.PutInPot);
         }
 
-        if (other.CompareTag(Tag.Kochi))
+        else if (other.CompareTag(Tag.Kochi))
         {
             kochi = other.GetComponent<Kochi>();
 
@@ -101,6 +101,7 @@ public class FoodPiece : Food
 
     void OnUnGrabed()
     {
+        print("UnGrabbed");
         if (kochi == null) return;
 
         Destroy(grabInteractable);
