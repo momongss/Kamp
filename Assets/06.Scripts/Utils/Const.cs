@@ -42,6 +42,7 @@ public class Tag
     public const string HandInteraction = "HandInteraction";
     public const string PotTop = "PotTop";
     public const string PotBotton = "PotBotton";
+    public const string Salt = "Salt";
 }
 
 public class Scene

@@ -18,6 +18,7 @@ TagManager:
   - PhyicsButton
   - PotTop
   - PotBotton
+  - Salt
   layers:
   - Default
   - TransparentFX
