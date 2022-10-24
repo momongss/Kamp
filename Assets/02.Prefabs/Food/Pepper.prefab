@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 62361856944939593}
   - component: {fileID: 5328673447210327797}
   m_Layer: 0
-  m_Name: Salt
+  m_Name: Pepper
   m_TagString: Salt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,5 +77,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasRigidbody: 1
   rigid: {fileID: 8185302150200673567}
-  foodType: 11
+  foodType: 12
   sprinkle_force: 55

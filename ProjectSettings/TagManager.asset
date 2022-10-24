@@ -19,6 +19,7 @@ TagManager:
   - PotTop
   - PotBotton
   - Salt
+  - Pepper
   layers:
   - Default
   - TransparentFX

@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Salt : MonoBehaviour
+public class Powder : Food
 {
-    public Rigidbody rigid;
     public float sprinkle_force = 1f;
 
     public void Splinkle(Vector3 dir)
@@ -12,11 +11,15 @@ public class Salt : MonoBehaviour
         rigid.AddForce(dir * sprinkle_force);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
+
         if (other.CompareTag(Tag.Pot))
         {
-            print("소금소금");
+            CookManager.Instance.OnCompleteWork(this, Action.PutInPot);
+
+            Destroy(gameObject);
         }
     }
 }
