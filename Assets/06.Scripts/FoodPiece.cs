@@ -14,8 +14,6 @@ public class FoodPiece : Food
     List<Transform> childs = new List<Transform>();
     XRGrabInteractable grabInteractable;
 
-    Cuttable parentIngredient;
-
     Kochi kochi;
 
     protected override void OnTriggerEnter(Collider other)
@@ -54,14 +52,6 @@ public class FoodPiece : Food
     protected override void Awake()
     {
         base.Awake();
-
-        // FoodPiece 가 자를 수 있다면(piece 가 1개 이상) Cuttable 자식으로 존재하는 걸로 가정한다.
-        if (transform.childCount > 1)
-        {
-            parentIngredient = transform.parent.GetComponent<Cuttable>();
-            foodType = parentIngredient.foodType;
-        }
-
 
         // Rigidbody 가 없으면 XRGrabInteractable 도 없는 것으로 간주한다.
         if (grabInteractable == null)
@@ -141,6 +131,7 @@ public class FoodPiece : Food
 
         if (cLeft.Count < cRight.Count)
         {
+
             fpLeft.AddForce((fpLeft.transform.position - fpRight.transform.position).normalized * 110f);
         }
         else
@@ -170,7 +161,7 @@ public class FoodPiece : Food
         }
 
         GameObject Piece = new GameObject("piece");
-        Piece.transform.parent = parentIngredient.transform;
+
         Piece.transform.position = pieces[0].position;
         for (int i = 0; i < pieces.Count; i++)
         {
@@ -184,6 +175,7 @@ public class FoodPiece : Food
         }
 
         FoodPiece foodPiece = foodPiecarize(Piece);
+        foodPiece.foodType = foodType;
 
         if (pieces.Count == 1)
         {

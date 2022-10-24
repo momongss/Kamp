@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 4472047981586378379}
   - component: {fileID: 9007890117146097167}
   m_Layer: 0
-  m_Name: Leak_slice
+  m_Name: Green_Onion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
