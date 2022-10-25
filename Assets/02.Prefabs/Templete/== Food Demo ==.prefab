@@ -36271,7 +36271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 18
-  action: 0
+  action: 5
   totalWorkCount: 3
   workCount: 0
 --- !u!1 &8855222172680908378 stripped
@@ -36321,7 +36321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 8
-  action: 0
+  action: 5
   totalWorkCount: 3
   workCount: 0
 --- !u!1 &8855222173161722589 stripped
@@ -36343,7 +36343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 10
-  action: 0
+  action: 5
   totalWorkCount: 3
   workCount: 0
 --- !u!114 &8855222173649221204 stripped
@@ -36383,7 +36383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 9
-  action: 0
+  action: 5
   totalWorkCount: 3
   workCount: 0
 --- !u!1 &8855222174017376915 stripped
