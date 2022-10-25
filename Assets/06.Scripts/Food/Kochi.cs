@@ -19,14 +19,15 @@ public class Kochi : Food
 
     FoodPiece currPiece;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         foodPosList = Utils.GetChildren(foodPosListParent);
 
         currPos = 0;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Tag.Fire))
         {
@@ -34,10 +35,6 @@ public class Kochi : Food
             {
                 r.isCooking = true;
             }
-        }
-        else if (other.CompareTag(Tag.FoodPiece))
-        {
-            currPiece = other.GetComponent<FoodPiece>();
         }
     }
 
@@ -50,10 +47,6 @@ public class Kochi : Food
                 r.isCooking = false;
             }
         }
-        else if (other.CompareTag(Tag.FoodPiece))
-        {
-            currPiece = null;
-        }
     }
 
     public void OnGrabbed()
@@ -63,10 +56,6 @@ public class Kochi : Food
 
     public void OnUnGrabbed()
     {
-        if (currPiece == null) return;
-
-        StickOn(currPiece);
-
         collisionColl.isTrigger = false;
     }
 

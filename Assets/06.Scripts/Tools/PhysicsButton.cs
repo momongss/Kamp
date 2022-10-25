@@ -9,8 +9,10 @@ public class PhysicsButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("Enter");
         if (other.CompareTag(Tag.PhyicsButton))
         {
+            print("hit");
             OnClick.Invoke();
         }
     }

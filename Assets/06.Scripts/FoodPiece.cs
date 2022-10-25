@@ -12,35 +12,51 @@ public class FoodPiece : Food
     public bool isStickable = false;
 
     List<Transform> childs = new List<Transform>();
-    Rigidbody rigid;
     XRGrabInteractable grabInteractable;
 
-    Cuttable parentIngredient;
+    Kochi kochi;
 
-    protected virtual void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
+
         if (transform.childCount > 1) return;
 
         if (other.CompareTag(Tag.Pot))
         {
-            CookManager.Instance.OnCompleteWork(this, Food.Action.PutInPot);
+            CookManager.Instance.OnCompleteWork(this, Action.PutInPot);
+        }
+
+        else if (other.CompareTag(Tag.Kochi))
+        {
+            kochi = other.GetComponent<Kochi>();
+
+            print("꽂을려고 시도함.");
         }
     }
 
-    protected virtual void Awake()
+    private void OnTriggerExit(Collider other)
     {
-        // FoodPiece 가 자를 수 있다면(piece 가 1개 이상) Cuttable 자식으로 존재하는 걸로 가정한다.
-        if (transform.childCount > 1)
+        if (other.CompareTag(Tag.Kochi))
         {
-            parentIngredient = transform.parent.GetComponent<Cuttable>();
-            foodType = parentIngredient.foodType;
-        }
+            print("여기");
+            if (kochi == other.GetComponent<Kochi>())
+            {
+                print("꽂을려다 말았음.");
 
+                kochi = null;
+            }
+        }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
 
         // Rigidbody 가 없으면 XRGrabInteractable 도 없는 것으로 간주한다.
-        if (rigid == null)
+        if (grabInteractable == null)
         {
-            InitRigid();
+            InitGrabInteractable();
         }
 
         for (int i = 0; i < transform.childCount; i++)
@@ -49,10 +65,9 @@ public class FoodPiece : Food
         }
     }
 
-    void InitRigid()
+    void InitGrabInteractable()
     {
         grabInteractable = gameObject.AddComponent<XRGrabInteractable>();
-        rigid = gameObject.GetComponent<Rigidbody>();
 
         SelectEnterEvent activated = new SelectEnterEvent();
         activated.AddListener((e) =>
@@ -76,7 +91,14 @@ public class FoodPiece : Food
 
     void OnUnGrabed()
     {
+        print("UnGrabbed");
+        if (kochi == null) return;
 
+        Destroy(grabInteractable);
+        Destroy(rigid);
+
+        kochi.StickOn(this);
+        kochi = null;
     }
 
     public void StickedOn()
@@ -86,7 +108,7 @@ public class FoodPiece : Food
         Destroy(grabInteractable);
         Destroy(rigid);
 
-        CookManager.Instance.OnCompleteWork(this, Food.Action.Skewer);
+        CookManager.Instance.OnCompleteWork(this, Action.Skewer);
     }
 
     public void Cut(int pieceNum)
@@ -109,6 +131,7 @@ public class FoodPiece : Food
 
         if (cLeft.Count < cRight.Count)
         {
+
             fpLeft.AddForce((fpLeft.transform.position - fpRight.transform.position).normalized * 110f);
         }
         else
@@ -124,7 +147,7 @@ public class FoodPiece : Food
         // Rigidbody 가 없으면 XRGrabInteractable 도 없는 것으로 간주한다.
         if (rigid == null)
         {
-            InitRigid();
+            InitGrabInteractable();
         }
         rigid.AddForce(force);
     }
@@ -138,7 +161,7 @@ public class FoodPiece : Food
         }
 
         GameObject Piece = new GameObject("piece");
-        Piece.transform.parent = parentIngredient.transform;
+
         Piece.transform.position = pieces[0].position;
         for (int i = 0; i < pieces.Count; i++)
         {
@@ -152,13 +175,14 @@ public class FoodPiece : Food
         }
 
         FoodPiece foodPiece = foodPiecarize(Piece);
+        foodPiece.foodType = foodType;
 
         if (pieces.Count == 1)
         {
             foodPiece.isStickable = true;
             foodPiece.transform.parent = null;
 
-            CookManager.Instance.OnCompleteWork(this, Food.Action.Cut);
+            CookManager.Instance.OnCompleteWork(this, Action.Cut);
         }
 
         foodPiece.foodType = foodType;

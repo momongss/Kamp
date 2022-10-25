@@ -40,6 +40,10 @@ public class Tag
     public const string Terrain = "Terrain";
     public const string PhyicsButton = "PhyicsButton";
     public const string HandInteraction = "HandInteraction";
+    public const string PotTop = "PotTop";
+    public const string PotBotton = "PotBotton";
+    public const string Salt = "Salt";
+    public const string Pepper = "Pepper";
 }
 
 public class Scene

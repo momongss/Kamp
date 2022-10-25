@@ -50,15 +50,11 @@ public class UICookStepList : UIPanel
     {
         UICookStep step = stepList[currStep];
 
-        // print($"{step.type}:{type}, {step.action}:{action}");
-
-        print($"ee {step.type} {food.foodType} {step.action} {action}");
 
         if (!(step.type == food.foodType && step.action == action)) return;
 
         step.workCount++;
 
-        print($"{step.workCount} {step.totalWorkCount}");
         if (step.workCount >= step.totalWorkCount)
         {
             OnCompleteStep();

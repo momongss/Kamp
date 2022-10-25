@@ -8,6 +8,7 @@ public class RespawnItem : MonoBehaviour
 
     public void Respawn()
     {
+        print("Spawn");
         Instantiate(item, transform.position, Quaternion.identity);
     }
 }
