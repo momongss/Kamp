@@ -22,7 +22,6 @@ public class SpawnBall : MonoBehaviour
             isThrowed = false;
 
             float distanceWithPlayer = Vector3.Distance(transform.position, Player.I.transform.position);
-            print(distanceWithPlayer);
 
             if (distanceWithPlayer > throwDistance)
             {

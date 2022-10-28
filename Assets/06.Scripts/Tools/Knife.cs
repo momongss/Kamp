@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
+    GameObject CutTrigger;
+    FoodPiece foodPiece;
+
+    int pieceNum;
+
+    public float offesetY = 0f;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Tag.FoodCutTrigger))
         {
-            FoodPiece piece = other.transform.parent.parent.GetComponent<FoodPiece>();
+            foodPiece = other.transform.parent.parent.GetComponent<FoodPiece>();
 
-            int pieceNum = Int32.Parse(other.name) + 1;
+            pieceNum = Int32.Parse(other.name) + 1;
 
-            Destroy(other.gameObject);
-            piece.Cut(pieceNum);
+            // Destroy(CutTrigger);
+            foodPiece.Cut(pieceNum);
         }
     }
 }
