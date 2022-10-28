@@ -92,7 +92,6 @@ public class FoodPiece : Food
 
     void OnUnGrabed()
     {
-        print("UnGrabbed");
         if (kochi == null) return;
 
         Destroy(grabInteractable);
@@ -116,21 +115,14 @@ public class FoodPiece : Food
     {
         if (isCutable == true)
         {
-            isCutable = false;
-
-            squashNStretch.Squash_N_Stretch(() =>
-            {
-                _Cut(pieceNum);
-            });
-        }
-        else
-        {
-            squashNStretch.Squash_N_Stretch();
+            _Cut(pieceNum);
         }
     }
 
     void _Cut(int pieceNum)
     {
+        isCutable = false;
+
         XRGrabInteractable xrGrab = gameObject.GetComponent<XRGrabInteractable>();
         Rigidbody _rigid = gameObject.GetComponent<Rigidbody>();
 
@@ -153,8 +145,7 @@ public class FoodPiece : Food
             fpRight.AddForce((fpRight.transform.position - fpLeft.transform.position).normalized * 110f);
         }
 
-        Destroy(rigid);
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
     public void AddForce(Vector3 force)

@@ -14,17 +14,23 @@ public class SquashNStretch : MonoBehaviour
     private void Start()
     {
         originScale = transform.localScale;
+
+        Squash_N_Stretch();
     }
 
     public void Squash_N_Stretch()
     {
         if (sequence != null) sequence.Kill();
 
+        print("Squash n Stretch");
+
         Vector3 target_scale = new Vector3(
-            originScale.x * 1.2f,
+            originScale.x * 1.4f,
             originScale.y * 0.5f,
-            originScale.z * 1.2f
+            originScale.z * 1.4f
             );
+
+        print($"Origin : {originScale}, Target : {target_scale}");
 
         sequence = DOTween.Sequence();
         sequence.Append(transform
@@ -41,7 +47,10 @@ public class SquashNStretch : MonoBehaviour
 
     public void Squash_N_Stretch(TweenCallback callback)
     {
-        if (sequence != null) sequence.Kill();
+        if (sequence != null)
+        {
+            sequence.Kill();
+        }
 
         Vector3 target_scale = new Vector3(
             originScale.x * 1.2f,
@@ -69,15 +78,35 @@ public class SquashNStretch : MonoBehaviour
 
     public void Squash()
     {
-        transform
-            .DOScale(originScale / 2, 0.5f)
-            .SetEase(Ease.OutBounce);
+        if (sequence != null) sequence.Kill();
+
+        Vector3 target_scale = new Vector3(
+            originScale.x * 1.2f,
+            originScale.y * 0.5f,
+            originScale.z * 1.2f
+            );
+
+        sequence = DOTween.Sequence();
+        sequence.Append(transform
+            .DOScale(target_scale, 0.3f)
+            .SetEase(Ease.OutBounce)
+            .OnComplete(() =>
+            {
+                sequence = null;
+            }));
     }
 
-    public void RestoreOrigin()
+    public void Stretch()
     {
-        transform
-            .DOScale(originScale, 0.5f)
-            .SetEase(Ease.OutBounce);
+        if (sequence != null) sequence.Kill();
+
+        sequence = DOTween.Sequence();
+        sequence.Append(transform
+            .DOScale(originScale, 0.2f)
+            .SetEase(Ease.OutBounce)
+            .OnComplete(() =>
+            {
+                sequence = null;
+            }));
     }
 }
