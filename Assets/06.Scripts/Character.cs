@@ -32,8 +32,12 @@ public class Character : MonoBehaviour
 
     Rigidbody rigid;
 
+    SquashNStretch squashNStretch;
+
     public void OnSelected()
     {
+        squashNStretch.Squash_N_Stretch(1.4f, 0.7f, 1.4f);
+
         float distance = Vector3.Distance(transform.position, Player.I.transform.position);
 
         if (distance > 2f)
@@ -44,7 +48,6 @@ public class Character : MonoBehaviour
         {
             ChangeState(State.TalkToPlayer);
             transform.LookAt(Player.I.transform);
-
         }
     }
 
@@ -174,6 +177,8 @@ public class Character : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         rigid = GetComponent<Rigidbody>();
+
+        squashNStretch = GetComponent<SquashNStretch>();
 
         speechBubble = GetComponentInChildren<SpeechBubble>();
     }

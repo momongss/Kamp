@@ -18,29 +18,40 @@ public class SquashNStretch : MonoBehaviour
         Squash_N_Stretch();
     }
 
-    public void Squash_N_Stretch()
+    public void Squash_N_Stretch(float scaling_x = 1.4f, float scaling_y = 0.5f, float scaling_z = 1.4f)
     {
         if (sequence != null) sequence.Kill();
 
         print("Squash n Stretch");
 
-        Vector3 target_scale = new Vector3(
-            originScale.x * 1.4f,
-            originScale.y * 0.5f,
-            originScale.z * 1.4f
+        Vector3 squash_scale = new Vector3(
+            originScale.x * scaling_x,
+            originScale.y * scaling_y,
+            originScale.z * scaling_z
             );
 
-        print($"Origin : {originScale}, Target : {target_scale}");
+        print($"Origin : {originScale}, Target : {squash_scale}");
 
         sequence = DOTween.Sequence();
         sequence.Append(transform
-            .DOScale(target_scale, 0.3f)
+            .DOScale(squash_scale, 0.3f)
             .SetEase(Ease.OutBounce)
             .OnComplete(() =>
             {
+                Vector3 stretch_scale = new Vector3(
+                    originScale.x * 0.9f,
+                    originScale.y * 1.2f,
+                    originScale.z * 0.9f
+                    );
+
                 transform
-                    .DOScale(originScale, 0.2f)
-                    .SetEase(Ease.OutBounce);
+                    .DOScale(stretch_scale, 0.1f)
+                    .OnComplete(() =>
+                    {
+                        transform
+                            .DOScale(originScale, 0.1f)
+                            .SetEase(Ease.OutBounce);
+                    });
                 sequence = null;
             }));
     }
