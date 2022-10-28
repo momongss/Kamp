@@ -13,6 +13,7 @@ public class FoodPiece : Food
 
     List<Transform> childs = new List<Transform>();
     XRGrabInteractable grabInteractable;
+    SquashNStretch squashNStretch;
 
     Kochi kochi;
 
@@ -53,10 +54,9 @@ public class FoodPiece : Food
     {
         base.Awake();
 
-        // Rigidbody 가 없으면 XRGrabInteractable 도 없는 것으로 간주한다.
         if (grabInteractable == null)
         {
-            InitGrabInteractable();
+            InitComponents();
         }
 
         for (int i = 0; i < transform.childCount; i++)
@@ -65,9 +65,10 @@ public class FoodPiece : Food
         }
     }
 
-    void InitGrabInteractable()
+    void InitComponents()
     {
         grabInteractable = gameObject.AddComponent<XRGrabInteractable>();
+        squashNStretch = gameObject.AddComponent<SquashNStretch>();
 
         SelectEnterEvent activated = new SelectEnterEvent();
         activated.AddListener((e) =>
@@ -113,10 +114,23 @@ public class FoodPiece : Food
 
     public void Cut(int pieceNum)
     {
-        if (!isCutable) return;
+        if (isCutable == true)
+        {
+            isCutable = false;
 
-        isCutable = false;
+            squashNStretch.Squash_N_Stretch(() =>
+            {
+                _Cut(pieceNum);
+            });
+        }
+        else
+        {
+            squashNStretch.Squash_N_Stretch();
+        }
+    }
 
+    void _Cut(int pieceNum)
+    {
         XRGrabInteractable xrGrab = gameObject.GetComponent<XRGrabInteractable>();
         Rigidbody _rigid = gameObject.GetComponent<Rigidbody>();
 
@@ -139,7 +153,8 @@ public class FoodPiece : Food
             fpRight.AddForce((fpRight.transform.position - fpLeft.transform.position).normalized * 110f);
         }
 
-        Destroy(gameObject);
+        Destroy(rigid);
+        Destroy(gameObject, 1f);
     }
 
     public void AddForce(Vector3 force)
@@ -147,7 +162,7 @@ public class FoodPiece : Food
         // Rigidbody 가 없으면 XRGrabInteractable 도 없는 것으로 간주한다.
         if (rigid == null)
         {
-            InitGrabInteractable();
+            InitComponents();
         }
         rigid.AddForce(force);
     }
