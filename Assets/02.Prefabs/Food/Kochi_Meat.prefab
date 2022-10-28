@@ -436,7 +436,7 @@ MonoBehaviour:
   isCutable: 1
   isRoastable: 0
   isStickable: 0
-  cookTime: 15
+  cookTime: 5
   currCookTime: 0
   meatRenderer: {fileID: 0}
   cookedMeshFilter: {fileID: 0}
