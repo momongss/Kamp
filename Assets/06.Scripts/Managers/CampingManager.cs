@@ -11,6 +11,8 @@ public class CampingManager : MonoBehaviour
 
     public Character[] characterList;
 
+    public string[] speach_Arrival_To_Camp = new string[] { "와!! 신난다!", "아함~", "안녕~!!" };
+
     public static CampingManager Instance { get; private set; }
 
     private void Awake()
