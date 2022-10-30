@@ -22,15 +22,11 @@ public class SquashNStretch : MonoBehaviour
     {
         if (sequence != null) sequence.Kill();
 
-        print("Squash n Stretch");
-
         Vector3 squash_scale = new Vector3(
             originScale.x * scaling_x,
             originScale.y * scaling_y,
             originScale.z * scaling_z
             );
-
-        print($"Origin : {originScale}, Target : {squash_scale}");
 
         sequence = DOTween.Sequence();
         sequence.Append(transform
