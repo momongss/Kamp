@@ -175,6 +175,7 @@ public class Character : MonoBehaviour
         animator = model.GetComponent<Animator>();
 
         agent = GetComponent<NavMeshAgent>();
+        agent.Warp(transform.position);
 
         rigid = GetComponent<Rigidbody>();
 
@@ -187,7 +188,7 @@ public class Character : MonoBehaviour
     {
         navPath = new NavMeshPath();
 
-        ChangeState(State.WalkAround);
+        ChangeState(State.Idle);
     }
 
     private void OnTriggerEnter(Collider other)

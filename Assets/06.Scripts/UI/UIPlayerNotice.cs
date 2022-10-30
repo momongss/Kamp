@@ -5,7 +5,14 @@ using TMPro;
 
 public class UIPlayerNotice : MonoBehaviour
 {
+    public static UIPlayerNotice Instance { get; private set; }
+
     public TextMeshProUGUI text;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
