@@ -22,12 +22,13 @@ public class CampingManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SetState(State.Greet_Characters, 5f));
+        StartCoroutine(SetState(State.Greet_Characters, 2f));
     }
 
     public void SpawnCharacters()
     {
-        foreach (Character c in characterList) {
+        foreach (Character c in characterList)
+        {
             c.gameObject.SetActive(true);
         }
     }
@@ -41,7 +42,7 @@ public class CampingManager : MonoBehaviour
         switch (state)
         {
             case State.Greet_Characters:
-                UIPlayerNotice.Instance.ShowNotice("캐릭터들이 도착했어요!! 마중 나가볼까요??");
+                UIPlayerNotice.Instance.ShowNotice("캐릭터들이 도착했어요!! 마중 나가볼까요??", 4f);
                 break;
         }
     }
