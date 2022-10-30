@@ -7,7 +7,15 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
-    public enum State { Idle, ArrivalToCampground, WalkAround, MoveToPlayer, TalkToPlayer }
+    public enum State
+    {
+        Idle,
+        ArrivalToCampground,
+        FollowPlayer,
+        WalkAround,
+        MoveToPlayer,
+        TalkToPlayer
+    }
     public State state = State.Idle;
 
     Transform model;
@@ -35,6 +43,13 @@ public class Character : MonoBehaviour
     SquashNStretch squashNStretch;
 
     public ParticleSystem PS_Appear;
+    public string[] talk_anything = new string[] {
+        "È÷Èþ",
+        "³Ê¹« ¿¹»Ú´Ù~",
+        "³Ê¹« ½Å³ª!",
+    };
+
+    public string[] talk_special = new string[] { };
 
     public void OnSelected()
     {
@@ -91,11 +106,13 @@ public class Character : MonoBehaviour
         agent.SetDestination(dest);
     }
 
-    void ChangeState(State _state)
+    public void ChangeState(State _state)
     {
         state = _state;
 
         stateTimer = Time.time;
+
+        print(state);
 
         switch (_state)
         {
@@ -103,7 +120,9 @@ public class Character : MonoBehaviour
                 SetAgentWalkable(false);
                 animator.SetTrigger("IDLE");
                 animator.ResetTrigger("WALK");
+                StartCoroutine(SayAnything());
                 break;
+
             case State.ArrivalToCampground:
                 string[] talk_Candidates = CampingManager.Instance.speach_Arrival_To_Camp;
                 if (talk_Candidates.Length == 0)
@@ -118,24 +137,66 @@ public class Character : MonoBehaviour
                 PS_Appear.Play();
                 Destroy(PS_Appear.gameObject, 5f);
                 break;
+
+            case State.FollowPlayer:
+                SetAgentWalkable(true);
+                animator.ResetTrigger("IDLE");
+                animator.SetTrigger("WALK");
+
+                Vector3 delta = (transform.position - Player.I.transform.position).normalized * 3f;
+
+                SetMoveDest(Player.I.transform.position - delta);
+                break;
+
             case State.WalkAround:
                 SetAgentWalkable(true);
                 animator.ResetTrigger("IDLE");
                 animator.SetTrigger("WALK");
                 SetRandomMoveDest();
                 break;
+
             case State.MoveToPlayer:
                 SetAgentWalkable(true);
                 animator.ResetTrigger("IDLE");
                 animator.SetTrigger("WALK");
                 SetMoveDest(Player.I.transform.position);
                 break;
+
             case State.TalkToPlayer:
                 SetAgentWalkable(false);
                 animator.SetTrigger("IDLE");
                 animator.ResetTrigger("WALK");
                 speechBubble.Talk("¾È³ç?? ¤¾¤¾");
                 break;
+        }
+    }
+
+    IEnumerator SayAnything()
+    {
+        while (state == State.Idle || state == State.WalkAround)
+        {
+            yield return new WaitForSeconds(Random.Range(7f, 14f));
+
+            string talk;
+            if (talk_special.Length > 0)
+            {
+                if (Random.Range(0f, 1f) > 0.7f)
+                {
+                    speechBubble.Talk(talk_special[0]);
+                    yield return new WaitForSeconds(Random.Range(6f, 7f));
+                    speechBubble.Talk(talk_special[1]);
+                }
+                else
+                {
+                    talk = talk_anything[Random.Range(0, talk_anything.Length)];
+                    speechBubble.Talk(talk);
+                }
+            }
+            else
+            {
+                talk = talk_anything[Random.Range(0, talk_anything.Length)];
+                speechBubble.Talk(talk);
+            }
         }
     }
 
@@ -146,14 +207,22 @@ public class Character : MonoBehaviour
         switch (state)
         {
             case State.Idle:
-                if (curTime - stateTimer > stateIntervalIdle)
+
+                break;
+
+            case State.ArrivalToCampground:
+                if (curTime - stateTimer > 2f)
                 {
-                    ChangeState(State.WalkAround);
+                    ChangeState(State.FollowPlayer);
                 }
                 break;
-            case State.ArrivalToCampground:
-                
+
+            case State.FollowPlayer:
+                Vector3 delta = (transform.position - Player.I.transform.position).normalized * 3f;
+
+                SetMoveDest(Player.I.transform.position);
                 break;
+
             case State.WalkAround:
                 if (dest != null)
                 {
@@ -171,10 +240,13 @@ public class Character : MonoBehaviour
                     }
                 }
                 break;
+
             case State.MoveToPlayer:
                 break;
+
             case State.TalkToPlayer:
                 break;
+
             default:
                 break;
         }
@@ -199,6 +271,8 @@ public class Character : MonoBehaviour
 
     void Start()
     {
+        CharacterManager.Instance.RegisterCharacter(this);
+
         navPath = new NavMeshPath();
 
         ChangeState(State.ArrivalToCampground);

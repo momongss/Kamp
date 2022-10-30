@@ -57,6 +57,14 @@ MonoBehaviour:
   turnInterval: 5
   WalkAroundArea: 5
   testCube: {fileID: 0}
+  PS_Appear: {fileID: 0}
+  talk_anything:
+  - "\uD788\uD79D"
+  - "\uB108\uBB34 \uC608\uC058\uB2E4~"
+  - "\uB108\uBB34 \uC2E0\uB098!"
+  talk_special:
+  - "\uC655\uC774 \uB118\uC5B4\uC9C0\uBA74?"
+  - "\uD0B9\uCF69..\uD0A4\uD0A4..\uC7AC\uBC0C\uB2E4"
 --- !u!54 &8801734518680106292
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106,9 +114,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 5.74
-  m_Height: 1
+  m_Height: 14.493558
   m_Direction: 1
-  m_Center: {x: 0, y: 5.47, z: 0}
+  m_Center: {x: 0, y: 6.976779, z: 0}
 --- !u!114 &8594047620789599176
 MonoBehaviour:
   m_ObjectHideFlags: 0
