@@ -18,21 +18,17 @@ public class SpeechBubble : MonoBehaviour
         text.text = _text;
         gameObject.SetActive(true);
 
-        StartCoroutine(_Talk(_text, popTime));
+        print(_text);
+
+        StartCoroutine(_Hide(popTime));
     }
 
-    IEnumerator _Talk(string _text, float popTime)
+    IEnumerator _Hide(float popTime)
     {
         // 局聪皋捞记 贸府
 
         yield return new WaitForSeconds(popTime);
 
-        gameObject.SetActive(false);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         gameObject.SetActive(false);
     }
 }

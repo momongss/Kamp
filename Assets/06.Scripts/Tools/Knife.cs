@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
-    GameObject CutTrigger;
     FoodPiece foodPiece;
 
     int pieceNum;
@@ -20,7 +19,7 @@ public class Knife : MonoBehaviour
 
             pieceNum = Int32.Parse(other.name) + 1;
 
-            // Destroy(CutTrigger);
+            Destroy(other);
             foodPiece.Cut(pieceNum);
         }
     }

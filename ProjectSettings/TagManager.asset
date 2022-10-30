@@ -20,6 +20,7 @@ TagManager:
   - PotBotton
   - Salt
   - Pepper
+  - GreetingPlace
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
-    public enum State { Idle, WalkAround, MoveToPlayer, TalkToPlayer }
+    public enum State { Idle, ArrivalToCampground, WalkAround, MoveToPlayer, TalkToPlayer }
     public State state = State.Idle;
 
     Transform model;
@@ -32,8 +32,14 @@ public class Character : MonoBehaviour
 
     Rigidbody rigid;
 
+    SquashNStretch squashNStretch;
+
+    public ParticleSystem PS_Appear;
+
     public void OnSelected()
     {
+        squashNStretch.Squash_N_Stretch(1.4f, 0.7f, 1.4f);
+
         float distance = Vector3.Distance(transform.position, Player.I.transform.position);
 
         if (distance > 2f)
@@ -44,7 +50,6 @@ public class Character : MonoBehaviour
         {
             ChangeState(State.TalkToPlayer);
             transform.LookAt(Player.I.transform);
-
         }
     }
 
@@ -99,6 +104,20 @@ public class Character : MonoBehaviour
                 animator.SetTrigger("IDLE");
                 animator.ResetTrigger("WALK");
                 break;
+            case State.ArrivalToCampground:
+                string[] talk_Candidates = CampingManager.Instance.speach_Arrival_To_Camp;
+                if (talk_Candidates.Length == 0)
+                {
+                    Debug.LogWarning("Camping Manager에 대사 안넣어놈.");
+                    break;
+                }
+                string talk = talk_Candidates[Random.Range(0, talk_Candidates.Length)];
+                speechBubble.Talk(talk, 6f);
+                transform.LookAt(Player.I.transform);
+
+                PS_Appear.Play();
+                Destroy(PS_Appear.gameObject, 5f);
+                break;
             case State.WalkAround:
                 SetAgentWalkable(true);
                 animator.ResetTrigger("IDLE");
@@ -120,12 +139,6 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void PopUpSpeechBubble(string text)
-    {
-        speechBubble.Talk(text);
-    }
-
-
     void Update()
     {
         float curTime = Time.time;
@@ -137,7 +150,9 @@ public class Character : MonoBehaviour
                 {
                     ChangeState(State.WalkAround);
                 }
-
+                break;
+            case State.ArrivalToCampground:
+                
                 break;
             case State.WalkAround:
                 if (dest != null)
@@ -172,17 +187,21 @@ public class Character : MonoBehaviour
         animator = model.GetComponent<Animator>();
 
         agent = GetComponent<NavMeshAgent>();
+        agent.Warp(transform.position);
 
         rigid = GetComponent<Rigidbody>();
 
+        squashNStretch = GetComponent<SquashNStretch>();
+
         speechBubble = GetComponentInChildren<SpeechBubble>();
+        speechBubble.gameObject.SetActive(false);
     }
 
     void Start()
     {
         navPath = new NavMeshPath();
 
-        ChangeState(State.WalkAround);
+        ChangeState(State.ArrivalToCampground);
     }
 
     private void OnTriggerEnter(Collider other)
