@@ -28,7 +28,7 @@ public class CharacterManager : MonoBehaviour
         SetCharacters(Character.State.WalkAround);
     }
 
-    void SetCharacters(Character.State state)
+    public void SetCharacters(Character.State state)
     {
         foreach (Character c in characterList)
         {

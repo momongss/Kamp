@@ -43,6 +43,13 @@ public class Character : MonoBehaviour
     SquashNStretch squashNStretch;
 
     public ParticleSystem PS_Appear;
+    public string[] talk_anything = new string[] {
+        "히힝",
+        "너무 예쁘다~",
+        "너무 신나!",
+    };
+
+    public string[] talk_special = new string[] { };
 
     public void OnSelected()
     {
@@ -113,6 +120,7 @@ public class Character : MonoBehaviour
                 SetAgentWalkable(false);
                 animator.SetTrigger("IDLE");
                 animator.ResetTrigger("WALK");
+                StartCoroutine(SayAnything());
                 break;
 
             case State.ArrivalToCampground:
@@ -163,6 +171,35 @@ public class Character : MonoBehaviour
         }
     }
 
+    IEnumerator SayAnything()
+    {
+        while (state == State.Idle || state == State.WalkAround)
+        {
+            yield return new WaitForSeconds(Random.Range(7f, 14f));
+
+            string talk;
+            if (talk_special.Length > 0)
+            {
+                if (Random.Range(0f, 1f) > 0.7f)
+                {
+                    speechBubble.Talk(talk_special[0]);
+                    yield return new WaitForSeconds(Random.Range(6f, 7f));
+                    speechBubble.Talk(talk_special[1]);
+                }
+                else
+                {
+                    talk = talk_anything[Random.Range(0, talk_anything.Length)];
+                    speechBubble.Talk(talk);
+                }
+            }
+            else
+            {
+                talk = talk_anything[Random.Range(0, talk_anything.Length)];
+                speechBubble.Talk(talk);
+            }
+        }
+    }
+
     void Update()
     {
         float curTime = Time.time;
@@ -170,10 +207,7 @@ public class Character : MonoBehaviour
         switch (state)
         {
             case State.Idle:
-                if (curTime - stateTimer > stateIntervalIdle)
-                {
-                    ChangeState(State.WalkAround);
-                }
+
                 break;
 
             case State.ArrivalToCampground:
@@ -184,7 +218,6 @@ public class Character : MonoBehaviour
                 break;
 
             case State.FollowPlayer:
-                print("Follow");
                 Vector3 delta = (transform.position - Player.I.transform.position).normalized * 3f;
 
                 SetMoveDest(Player.I.transform.position);
@@ -234,12 +267,12 @@ public class Character : MonoBehaviour
 
         speechBubble = GetComponentInChildren<SpeechBubble>();
         speechBubble.gameObject.SetActive(false);
-
-        CharacterManager.Instance.RegisterCharacter(this);
     }
 
     void Start()
     {
+        CharacterManager.Instance.RegisterCharacter(this);
+
         navPath = new NavMeshPath();
 
         ChangeState(State.ArrivalToCampground);
