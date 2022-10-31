@@ -60,6 +60,7 @@ public class CookManager : MonoBehaviour
     public void OnCompleteCooking()
     {
         SetState(State.CompleteCooking);
+        MissionManager.I.OnMissionComplete(MissionManager.Type.Cook);
     }
 
     public void ShowSelectPanel()

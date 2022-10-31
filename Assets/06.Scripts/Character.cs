@@ -112,8 +112,6 @@ public class Character : MonoBehaviour
 
         stateTimer = Time.time;
 
-        print(state);
-
         switch (_state)
         {
             case State.Idle:

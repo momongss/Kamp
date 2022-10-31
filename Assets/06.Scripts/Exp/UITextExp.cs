@@ -10,7 +10,7 @@ public class UITextExp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ExpManager.Instance.Subscribe_Exp((float exp) =>
+        ExpManager.Instance.Subscribe_Exp((int exp) =>
         {
             text.text = $"{exp}";
         });

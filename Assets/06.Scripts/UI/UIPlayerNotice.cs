@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class UIPlayerNotice : MonoBehaviour
 {
-    public static UIPlayerNotice Instance { get; private set; }
+    public static UIPlayerNotice I { get; private set; }
 
     public TextMeshProUGUI text;
 
+    Canvas canvas;
+
     private void Awake()
     {
-        Instance = this;
+        I = this;
+
+        canvas = GetComponent<Canvas>();
+        canvas.enabled = false;
     }
 
     private void Start()
@@ -19,19 +25,51 @@ public class UIPlayerNotice : MonoBehaviour
         CloseNotice();
     }
 
-    public void ShowNotice(string content, float timeout = -1f)
+    public IEnumerator ShowNoticeDelay(string content, float delay, float timeout = -1f, UnityAction callback = null)
     {
+        yield return new WaitForSeconds(delay);
+
         text.text = content;
-        gameObject.SetActive(true);
+        canvas.enabled = true;
 
         if (timeout != -1)
         {
-            Invoke("CloseNotice", timeout);
+            yield return new WaitForSeconds(timeout);
+
+            CloseNotice();
+        }
+
+        if (callback != null)
+        {
+            callback();
+        }
+    }
+
+    public void ShowNotice(string content, float timeout = -1f, UnityAction callback = null)
+    {
+        StartCoroutine(_ShowNotice(content, timeout, callback));
+    }
+
+    public IEnumerator _ShowNotice(string content, float timeout, UnityAction callback)
+    {
+        text.text = content;
+        canvas.enabled = true;
+
+        if (timeout != -1)
+        {
+            yield return new WaitForSeconds(timeout);
+
+            CloseNotice();
+        }
+
+        if (callback != null)
+        {
+            callback();
         }
     }
 
     public void CloseNotice()
     {
-        gameObject.SetActive(false);
+        canvas.enabled = false;
     }
 }

@@ -33,6 +33,11 @@ public class CampingManager : MonoBehaviour
         }
     }
 
+    public void OnCompleteMissionRoutines()
+    {
+
+    }
+
     IEnumerator SetState(State newState, float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -42,7 +47,7 @@ public class CampingManager : MonoBehaviour
         switch (state)
         {
             case State.Greet_Characters:
-                UIPlayerNotice.Instance.ShowNotice("캐릭터들이 도착했어요!! 마중 나가볼까요??", 4f);
+                UIPlayerNotice.I.ShowNotice("캐릭터들이 도착했어요!! 마중 나가볼까요??");
                 break;
         }
     }

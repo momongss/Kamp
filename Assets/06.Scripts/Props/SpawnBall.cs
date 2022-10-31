@@ -12,6 +12,8 @@ public class SpawnBall : MonoBehaviour
     void Spawn()
     {
         Instantiate(spawnItem, transform.position, Quaternion.identity);
+
+        MissionManager.I.OnMissionComplete(MissionManager.Type.Tent);
         Destroy(gameObject);
     }
 
