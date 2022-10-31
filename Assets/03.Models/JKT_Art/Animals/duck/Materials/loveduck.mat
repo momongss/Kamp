@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: loveduck
-  m_Shader: {fileID: 4800000, guid: d84268709d11078d11005b9844295342, type: 3}
+  m_Shader: {fileID: 4800000, guid: 48dca5b99d113b8d11006bab44295342, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 5
@@ -26,6 +26,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 27dd8397dbc2cdb4a8b2b93abf02e711, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ToonShade:
@@ -69,7 +73,7 @@ Material:
     - _y_speed: 0
     m_Colors:
     - _BuffColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
     - _Rim_color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _color: {r: 0.70689654, g: 0.70689654, b: 0.70689654, a: 1}
     - _node_4218: {r: 0.5, g: 0.5, b: 0.5, a: 1}
