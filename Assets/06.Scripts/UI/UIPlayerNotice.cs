@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class UIPlayerNotice : MonoBehaviour
 {
@@ -12,12 +13,16 @@ public class UIPlayerNotice : MonoBehaviour
 
     Canvas canvas;
 
+    SquashNStretch squashNStretch;
+
     private void Awake()
     {
         I = this;
 
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
+
+        squashNStretch = GetComponentInChildren<SquashNStretch>();
     }
 
     private void Start()
@@ -54,6 +59,8 @@ public class UIPlayerNotice : MonoBehaviour
     {
         text.text = content;
         canvas.enabled = true;
+
+        squashNStretch.UI_Scaling();
 
         if (timeout != -1)
         {

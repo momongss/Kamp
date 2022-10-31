@@ -18,6 +18,19 @@ public class SquashNStretch : MonoBehaviour
         Squash_N_Stretch();
     }
 
+    public void UI_Scaling()
+    {
+        transform.localScale = new Vector3(
+            originScale.x * 0.05f,
+            originScale.y * 0.05f,
+            originScale.z * 0.05f
+            ); ;
+
+        transform
+            .DOScale(originScale, 0.25f)
+            .SetEase(Ease.OutBounce);
+    }
+
     public void Squash_N_Stretch(float scaling_x = 1.4f, float scaling_y = 0.5f, float scaling_z = 1.4f)
     {
         if (sequence != null) sequence.Kill();
