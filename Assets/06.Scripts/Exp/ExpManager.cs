@@ -9,14 +9,14 @@ public class ExpManager : MonoBehaviour
     public static ExpManager Instance { get; private set; }
 
     int level = 0;
-    float exp = 0;
+    int exp = 0;
 
     UnityEvent<int> level_event;
-    UnityEvent<float> exp_event;
+    UnityEvent<int> exp_event;
 
     const string exp_dataPath = "/Exp.json";
 
-    float[] required_exp = new float[] { 30, 50, 80, 120, 150, 180 };
+    int[] required_exp = new int[] { 30, 50, 80, 120, 150, 180 };
 
     private void Awake()
     {
@@ -27,13 +27,16 @@ public class ExpManager : MonoBehaviour
             JsonData.SaveJson($"{exp}", exp_dataPath);
         }
 
-        exp = float.Parse(JsonData.LoadJson(exp_dataPath));
+        exp = int.Parse(JsonData.LoadJson(exp_dataPath));
         level = Calculate_Level();
+
+        exp_event = new UnityEvent<int>();
+        level_event = new UnityEvent<int>();
     }
 
-    public void Subscribe_Exp(UnityAction<float> e)
+    public void Subscribe_Exp(UnityAction<int> e)
     {
-        if (exp_event == null) exp_event = new UnityEvent<float>();
+        if (exp_event == null) exp_event = new UnityEvent<int>();
 
         exp_event.AddListener(e);
         e(exp);
@@ -47,9 +50,9 @@ public class ExpManager : MonoBehaviour
         e(level);
     }
 
-    public void Add_Exp(float _exp_delta)
+    public void Add_Exp(int rewardExp)
     {
-        Set_Exp(exp + _exp_delta);
+        Set_Exp(exp + rewardExp);
         Set_Level();
     }
 
@@ -57,7 +60,8 @@ public class ExpManager : MonoBehaviour
     {
         float level_exp = 0;
 
-        for (int lv = 0; lv < required_exp.Length; lv++) {
+        for (int lv = 0; lv < required_exp.Length; lv++)
+        {
             level_exp += required_exp[lv];
 
             if (exp < level_exp)
@@ -69,7 +73,7 @@ public class ExpManager : MonoBehaviour
         return required_exp.Length - 1;
     }
 
-    void Set_Exp(float _exp)
+    void Set_Exp(int _exp)
     {
         exp = _exp;
         exp_event.Invoke(exp);
@@ -95,17 +99,5 @@ public class ExpManager : MonoBehaviour
     public float Get_Exp()
     {
         return exp;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
