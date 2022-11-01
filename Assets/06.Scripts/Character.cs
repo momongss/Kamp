@@ -7,6 +7,15 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
+    public enum Type
+    {
+        Penguin,
+        Sheep,
+        Duck
+    }
+
+    public Type type;
+
     public enum State
     {
         Idle,

@@ -49,5 +49,5 @@ public class Tag
 
 public class Scene
 {
-
+    public const string Green01 = "Green01";
 }
