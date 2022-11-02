@@ -6,7 +6,7 @@ public class Char_Map_Info : MonoBehaviour
 {
     public static Char_Map_Info I;
 
-    public List<Character.Type> selected_charaters = new List<Character.Type>();
+    public HashSet<Character.Type> selected_charaters = new HashSet<Character.Type>();
     public UISelectMap.MapType selected_mapType;
 
     private void Awake()

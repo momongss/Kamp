@@ -22,7 +22,7 @@ public class SelectSceneManager : MonoBehaviour
     {
         DontDestroyOnLoad(Char_Map_Info.I.gameObject);
 
-        SceneManager.LoadScene(Scene.Green01);
+        SceneManager.LoadScene(Scene.FoodDemo);
     }
 
     public void SelectMap(UISelectMap.MapType _mapType)

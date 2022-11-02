@@ -27,10 +27,29 @@ public class CampingManager : MonoBehaviour
 
     public void SpawnCharacters()
     {
-        foreach (Character c in characterList)
+        print(Char_Map_Info.I);
+
+        if (Char_Map_Info.I != null)
         {
-            c.gameObject.SetActive(true);
+            HashSet<Character.Type> selected_characters = Char_Map_Info.I.selected_charaters;
+
+            foreach (Character c in characterList)
+            {
+                if (selected_characters.Contains(c.type))
+                {
+                    print(c);
+                    c.gameObject.SetActive(true);
+                }
+            }
         }
+        else
+        {
+            foreach (Character c in characterList)
+            {
+                c.gameObject.SetActive(true);
+            }
+        }
+
     }
 
     public void OnCompleteMissionRoutines()

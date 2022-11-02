@@ -11,7 +11,9 @@ public class Character : MonoBehaviour
     {
         Penguin,
         Sheep,
-        Duck
+        Duck,
+        Cat,
+        GGUM
     }
 
     public Type type;

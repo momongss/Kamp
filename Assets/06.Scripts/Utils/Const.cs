@@ -50,4 +50,6 @@ public class Tag
 public class Scene
 {
     public const string Green01 = "Green01";
+    public const string FoodDemo = "FoodDemo";
+    public const string Opening = "Opening";
 }
