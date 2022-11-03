@@ -45,6 +45,7 @@ public class Tag
     public const string Salt = "Salt";
     public const string Pepper = "Pepper";
     public const string GreetingPlace = "GreetingPlace";
+    public const string Stew = "Stew";
 }
 
 public class Scene

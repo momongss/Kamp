@@ -7,8 +7,12 @@ public class Food : MonoBehaviour
     public bool hasRigidbody = true;
     public Rigidbody rigid;
 
+    public int satiety = 10;
+
     protected virtual void Awake()
     {
+        gameObject.tag = Tag.Food;
+
         if (hasRigidbody && rigid == null)
         {
             rigid = GetComponent<Rigidbody>();
@@ -30,6 +34,16 @@ public class Food : MonoBehaviour
             FloatingFood _f = gameObject.AddComponent<FloatingFood>();
             _f.pot = other.GetComponent<Pot>(); ;
         }
+        else if (other.CompareTag(Tag.Stew))
+        {
+            Stew stew = other.GetComponent<Stew>();
+            stew.PutFood(this);
+        }
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 
     public enum Type

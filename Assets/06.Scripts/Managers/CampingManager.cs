@@ -10,6 +10,7 @@ public class CampingManager : MonoBehaviour
     public State state;
 
     public Character[] characterList;
+    public List<Character> activeCharacterList;
 
     public string[] speach_Arrival_To_Camp = new string[] { "와!! 신난다!", "아함~", "안녕~!!" };
 
@@ -37,8 +38,9 @@ public class CampingManager : MonoBehaviour
             {
                 if (selected_characters.Contains(c.type))
                 {
-                    print(c);
                     c.gameObject.SetActive(true);
+
+                    activeCharacterList.Add(c);
                 }
             }
         }
@@ -47,6 +49,7 @@ public class CampingManager : MonoBehaviour
             foreach (Character c in characterList)
             {
                 c.gameObject.SetActive(true);
+                activeCharacterList.Add(c);
             }
         }
 

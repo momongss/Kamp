@@ -27,7 +27,6 @@ public class FoodPiece : Food
         {
             CookManager.Instance.OnCompleteWork(this, Action.PutInPot);
         }
-
         else if (other.CompareTag(Tag.Kochi))
         {
             kochi = other.GetComponent<Kochi>();
