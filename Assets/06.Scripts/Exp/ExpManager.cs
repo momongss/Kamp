@@ -20,6 +20,8 @@ public class ExpManager : MonoBehaviour
 
     private void Awake()
     {
+        print(Application.persistentDataPath);
+
         Instance = this;
 
         if (JsonData.isFileExist(exp_dataPath) == false)
@@ -52,8 +54,26 @@ public class ExpManager : MonoBehaviour
 
     public void Add_Exp(int rewardExp)
     {
+        print($"{rewardExp} exp");
+
         Set_Exp(exp + rewardExp);
-        Set_Level();
+        bool isLevelUP = Set_Level();
+        if (!isLevelUP)
+        {
+            UIPlayerNotice.I.ShowNotice($"+{rewardExp}exp!!", 4f);
+        }
+    }
+
+    public void Add_Exp(int rewardExp, string msg)
+    {
+        print($"{rewardExp} exp");
+
+        Set_Exp(exp + rewardExp);
+        bool isLevelUP = Set_Level();
+        if (!isLevelUP)
+        {
+            UIPlayerNotice.I.ShowNotice(msg, 4f);
+        }
     }
 
     int Calculate_Level()
@@ -81,14 +101,19 @@ public class ExpManager : MonoBehaviour
         JsonData.SaveJson($"{exp}", exp_dataPath);
     }
 
-    void Set_Level()
+    bool Set_Level()
     {
         int _level = Calculate_Level();
 
-        if (level == _level) return;
+        if (level == _level) return false;
 
         level = _level;
         level_event.Invoke(level);
+
+        print("Sel level");
+        UIPlayerNotice_LevelUP.I.ShowNotice(level);
+
+        return true;
     }
 
     public int Get_Level()

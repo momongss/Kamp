@@ -90,16 +90,15 @@ public class MissionManager : MonoBehaviour
 
         if (isCompleteAllMission == false)
         {
-            ExpManager.Instance.Add_Exp(rewardExp);
-            UIPlayerNotice.I.ShowNotice($"+{rewardExp}exp!!", 4f);
+            ExpManager.Instance.Add_Exp(rewardExp, $"+{rewardExp}exp!!");
         }
         else
         {
             int bonus = 100;
-            UIPlayerNotice.I.ShowNotice(
-                $"+{rewardExp + bonus}exp (보너스 100exp) " +
+
+            ExpManager.Instance.Add_Exp(rewardExp, $"+{rewardExp + bonus}exp (보너스 {bonus}exp) " +
                 $"오늘 미션을 모두 완료했어요!! " +
-                $"이제 편안히 캠핑을 즐겨봐요!", 5f);
+                $"이제 편안히 캠핑을 즐겨봐요!");
         }
     }
 }
