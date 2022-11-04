@@ -28,8 +28,6 @@ public class CampingManager : MonoBehaviour
 
     public void SpawnCharacters()
     {
-        print(Char_Map_Info.I);
-
         if (Char_Map_Info.I != null)
         {
             HashSet<Character.Type> selected_characters = Char_Map_Info.I.selected_charaters;

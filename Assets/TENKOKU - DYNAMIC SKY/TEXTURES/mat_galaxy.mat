@@ -50,9 +50,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GIntensity: 0
+    - _GIntensity: 0.1
     - _Intensity: 0
-    - _SIntensity: 1.609
+    - _SIntensity: 1
     - _perturbation: 0.405
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

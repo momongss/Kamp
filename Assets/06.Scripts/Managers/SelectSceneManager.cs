@@ -7,6 +7,8 @@ public class SelectSceneManager : MonoBehaviour
 {
     public static SelectSceneManager I { get; private set; }
 
+    UISelectMap.MapType mapType;
+
     private void Awake()
     {
         I = this;
@@ -27,7 +29,7 @@ public class SelectSceneManager : MonoBehaviour
 
     public void SelectMap(UISelectMap.MapType _mapType)
     {
-        Char_Map_Info.I.selected_mapType = _mapType;
+        mapType = _mapType;
     }
 
     public void AddCharacter(Character.Type type)

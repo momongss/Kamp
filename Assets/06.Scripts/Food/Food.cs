@@ -11,8 +11,6 @@ public class Food : MonoBehaviour
 
     protected virtual void Awake()
     {
-        gameObject.tag = Tag.Food;
-
         if (hasRigidbody && rigid == null)
         {
             rigid = GetComponent<Rigidbody>();

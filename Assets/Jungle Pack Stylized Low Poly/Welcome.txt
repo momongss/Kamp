@@ -1,0 +1,14 @@
+Thank you for purchasing 'Jungle Environment - Stylized Low Poly'
+
+You can immediately start with creating your first environment. 
+Open the Prefabs folder, take a look at the variety of assets and start constructing your scene.
+Demo and Showcase scenes are included aswell.
+
+
+If you like the package I would appreciate a small review on the product page!
+Good luck with your projects!
+
+
+
+Tip:
+Use the Post Processing Stack and switch to Linear Color Space for better visuals (Availabe for free as a Unity Plugin)

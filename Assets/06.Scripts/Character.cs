@@ -9,11 +9,11 @@ public class Character : MonoBehaviour
 {
     public enum Type
     {
-        Penguin,
-        Sheep,
-        Duck,
-        Cat,
-        GGUM
+        Penguin = 0,
+        Sheep = 1,
+        Duck = 2,
+        Cat = 3,
+        GGUM = 4
     }
 
     public Type type;
