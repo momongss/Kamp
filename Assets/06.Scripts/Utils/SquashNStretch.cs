@@ -14,7 +14,12 @@ public class SquashNStretch : MonoBehaviour
 
     private void Start()
     {
-        originScale = transform.localScale;
+        if (originScale == Vector3.zero)
+        {
+            originScale = transform.localScale;
+        }
+
+        print(originScale);
 
         Squash_N_Stretch();
     }

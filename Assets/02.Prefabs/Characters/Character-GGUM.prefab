@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597f78a639adcb849b7971bbbdeb32af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   state: 0
   stateIntervalIdle: 3
   turnInterval: 5
@@ -393,6 +394,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GGUMDOL_final
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149066100188643681, guid: aa50c926cfccda5419abd2145e2c9dbf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa50c926cfccda5419abd2145e2c9dbf, type: 3}

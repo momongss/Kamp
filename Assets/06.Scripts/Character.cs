@@ -197,6 +197,7 @@ public class Character : MonoBehaviour
                 break;
             case State.Meal:
                 transform.LookAt(PlaceEattingZone.I.transform.position);
+                SetAgentWalkable(false);
                 animator.SetTrigger("IDLE");
                 animator.ResetTrigger("WALK");
                 break;
