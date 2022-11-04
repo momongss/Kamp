@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &720713198168850785
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4985580525870095999, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 17fd0a9a30e3e7946b66d9942024c5a5, type: 2}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.16729
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.945511
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415601787877304602, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899967018460115872, guid: fd9304e4d4279bc49884dd30f5ff8365,
+        type: 3}
+      propertyPath: m_Name
+      value: Low Poly Hummingbird
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd9304e4d4279bc49884dd30f5ff8365, type: 3}

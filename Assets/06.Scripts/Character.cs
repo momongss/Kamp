@@ -7,6 +7,17 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
+    public enum Type
+    {
+        Penguin = 0,
+        Sheep = 1,
+        Duck = 2,
+        Cat = 3,
+        GGUM = 4
+    }
+
+    public Type type;
+
     public enum State
     {
         Idle,
@@ -14,7 +25,9 @@ public class Character : MonoBehaviour
         FollowPlayer,
         WalkAround,
         MoveToPlayer,
-        TalkToPlayer
+        TalkToPlayer,
+        GotoEat,
+        Meal
     }
     public State state = State.Idle;
 
@@ -50,6 +63,16 @@ public class Character : MonoBehaviour
     };
 
     public string[] talk_special = new string[] { };
+
+    Seat seat;
+
+    public void GotoEat()
+    {
+        seat = PlaceEattingZone.I.GetSeat();
+        seat.Sit();
+
+        ChangeState(State.GotoEat);
+    }
 
     public void OnSelected()
     {
@@ -166,6 +189,17 @@ public class Character : MonoBehaviour
                 animator.ResetTrigger("WALK");
                 speechBubble.Talk("¾È³ç?? ¤¾¤¾");
                 break;
+            case State.GotoEat:
+                SetAgentWalkable(true);
+                animator.ResetTrigger("IDLE");
+                animator.SetTrigger("WALK");
+                SetMoveDest(seat.transform.position);
+                break;
+            case State.Meal:
+                transform.LookAt(PlaceEattingZone.I.transform.position);
+                animator.SetTrigger("IDLE");
+                animator.ResetTrigger("WALK");
+                break;
         }
     }
 
@@ -245,6 +279,15 @@ public class Character : MonoBehaviour
             case State.TalkToPlayer:
                 break;
 
+            case State.GotoEat:
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    ChangeState(State.Meal);
+                }
+                break;
+            case State.Meal:
+
+                break;
             default:
                 break;
         }

@@ -48,9 +48,9 @@ public class UICookStepManager : UIPanel
         currStep.OnCompleteWork(food, action);
     }
 
-    public void OnCompleteAllStep()
+    public void OnCompleteAllStep(Food food)
     {
-        CookManager.Instance.OnCompleteCooking();
+        CookManager.Instance.OnCompleteCooking(food);
     }
 
     void HideAllUI()

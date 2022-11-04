@@ -60,7 +60,7 @@ public class UIPlayerNotice : MonoBehaviour
         text.text = content;
         canvas.enabled = true;
 
-        squashNStretch.UI_Scaling();
+        squashNStretch.UI_Scaling_Show();
 
         if (timeout != -1)
         {
@@ -77,6 +77,9 @@ public class UIPlayerNotice : MonoBehaviour
 
     public void CloseNotice()
     {
-        canvas.enabled = false;
+        squashNStretch.UI_Scaling_Hide(() =>
+        {
+            canvas.enabled = false;
+        });
     }
 }

@@ -14,6 +14,8 @@ public class CookManager : MonoBehaviour
     public UISelectRecipe uISelectRecipe;
     public UIPanel uIComplete;
 
+    public List<Food> food_completed_list = new List<Food>();
+
     public void SelectRecipe(Food.Type foodType, int count = 1)
     {
         uISelectRecipe.Hide();
@@ -57,10 +59,14 @@ public class CookManager : MonoBehaviour
         uICookStepManager.OnCompleteWork(food, action);
     }
 
-    public void OnCompleteCooking()
+    public void OnCompleteCooking(Food food)
     {
         SetState(State.CompleteCooking);
+
         MissionManager.I.OnMissionComplete(MissionManager.Type.Cook);
+
+        print($"Add {food}");
+        food_completed_list.Add(food);
     }
 
     public void ShowSelectPanel()

@@ -11,7 +11,7 @@ public class UICookStepList : UIPanel
 
     List<UICookStep> stepList;
     int stepCount = 0;
-    int currStep = 0;
+    int currStepCount = 0;
 
     public void StartStep(int count)
     {
@@ -31,9 +31,9 @@ public class UICookStepList : UIPanel
         }
 
         stepCount = stepList.Count;
-        currStep = 0;
+        currStepCount = 0;
 
-        ShowStep(currStep);
+        ShowStep(currStepCount);
     }
 
     void ShowStep(int step)
@@ -48,7 +48,7 @@ public class UICookStepList : UIPanel
 
     public void OnCompleteWork(Food food, Food.Action action)
     {
-        UICookStep step = stepList[currStep];
+        UICookStep step = stepList[currStepCount];
 
 
         if (!(step.type == food.foodType && step.action == action)) return;
@@ -57,32 +57,32 @@ public class UICookStepList : UIPanel
 
         if (step.workCount >= step.totalWorkCount)
         {
-            OnCompleteStep();
+            OnCompleteStep(food);
         }
     }
 
     // 지금 Step 과 Work 네이밍에 오류 존재함. 주의해야함.
-    public void OnCompleteStep()
+    public void OnCompleteStep(Food food)
     {
         // print($"{currStep}, {stepCount}");
-        if (currStep >= stepCount)
+        if (currStepCount >= stepCount)
         {
             Debug.LogWarning("step 오류 발생. step 로직 확인필요");
             return;
         }
-        else if (currStep == stepCount - 1)
+        else if (currStepCount == stepCount - 1)
         {
-            OnCompleteAllStep();
+            OnCompleteAllStep(food);
         }
         else
         {
-            currStep++;
-            ShowStep(currStep);
+            currStepCount++;
+            ShowStep(currStepCount);
         }
     }
 
-    void OnCompleteAllStep()
+    void OnCompleteAllStep(Food food)
     {
-        UICookStepManager.I.OnCompleteAllStep();
+        UICookStepManager.I.OnCompleteAllStep(food);
     }
 }

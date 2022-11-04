@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class SquashNStretch : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class SquashNStretch : MonoBehaviour
         Squash_N_Stretch();
     }
 
-    public void UI_Scaling()
+    public void UI_Scaling_Show()
     {
         transform.localScale = new Vector3(
             originScale.x * 0.05f,
@@ -29,6 +30,22 @@ public class SquashNStretch : MonoBehaviour
         transform
             .DOScale(originScale, 0.25f)
             .SetEase(Ease.OutBounce);
+    }
+
+    public void UI_Scaling_Hide(UnityAction callback = null)
+    {
+        transform
+            .DOScale(originScale * 0.6f, 0.25f)
+            .SetEase(Ease.InOutBounce)
+            .OnComplete(() =>
+            {
+                transform
+                    .DOScale(Vector3.zero, 0.25f)
+                    .OnComplete(() =>
+                    {
+                        if (callback != null) callback();
+                    });
+            });
     }
 
     public void Squash_N_Stretch(float scaling_x = 1.4f, float scaling_y = 0.5f, float scaling_z = 1.4f)

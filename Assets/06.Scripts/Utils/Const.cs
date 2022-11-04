@@ -45,9 +45,12 @@ public class Tag
     public const string Salt = "Salt";
     public const string Pepper = "Pepper";
     public const string GreetingPlace = "GreetingPlace";
+    public const string Stew = "Stew";
 }
 
 public class Scene
 {
-
+    public const string Green01 = "Green01";
+    public const string FoodDemo = "FoodDemo";
+    public const string Opening = "Opening";
 }

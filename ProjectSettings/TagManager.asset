@@ -21,6 +21,7 @@ TagManager:
   - Salt
   - Pepper
   - GreetingPlace
+  - Stew
   layers:
   - Default
   - TransparentFX
