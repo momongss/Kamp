@@ -20,8 +20,6 @@ public class FoodSpotManager : MonoBehaviour
         {
             foodSpotList[i] = T_foodSpotList[i].GetComponent<FoodSpot>();
         }
-
-        print(foodSpotList.Length);
     }
 
     public void PutFood(Food food)

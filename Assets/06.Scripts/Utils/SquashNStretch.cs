@@ -19,8 +19,6 @@ public class SquashNStretch : MonoBehaviour
             originScale = transform.localScale;
         }
 
-        print(originScale);
-
         Squash_N_Stretch();
     }
 

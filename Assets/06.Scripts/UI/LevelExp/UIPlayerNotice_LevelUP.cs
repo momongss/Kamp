@@ -13,6 +13,12 @@ public class UIPlayerNotice_LevelUP : MonoBehaviour
 
     SquashNStretch squashNStretch;
 
+    public Transform T_characterParent;
+
+    CharacterIndicator[] characterUIList;
+
+    bool isShowing = false;
+
     private void Awake()
     {
         I = this;
@@ -21,7 +27,7 @@ public class UIPlayerNotice_LevelUP : MonoBehaviour
 
         squashNStretch = Panel.GetComponent<SquashNStretch>();
 
-        print(squashNStretch);
+        characterUIList = T_characterParent.GetComponentsInChildren<CharacterIndicator>(true);
     }
 
     private void Start()
@@ -31,15 +37,49 @@ public class UIPlayerNotice_LevelUP : MonoBehaviour
 
     public void ShowNotice(int level, float timeout = -1f, UnityAction callback = null)
     {
-        Panel.gameObject.SetActive(true);
+        isShowing = true;
 
-        print("show");
+        Panel.gameObject.SetActive(true);
 
         StartCoroutine(_ShowNotice(level, timeout, callback));
     }
 
     public IEnumerator _ShowNotice(int level, float timeout, UnityAction callback)
     {
+        Character.Type type;
+        switch (level)
+        {
+            case 2:
+                type = Character.Type.Duck;
+                break;
+            case 3:
+                type = Character.Type.Sheep;
+                break;
+            case 4:
+                type = Character.Type.Cat;
+                break;
+            case 5:
+                type = Character.Type.GGUM;
+                break;
+            default:
+                type = Character.Type.None;
+                break;
+        }
+
+        if (type != Character.Type.None)
+        {
+            foreach (var c in characterUIList)
+            {
+                if (c.type == type)
+                {
+                    c.gameObject.SetActive(true);
+                } else
+                {
+                    c.gameObject.SetActive(false);
+                }
+            }
+        }
+
         text.text = $"{level} ·¹º§";
 
         squashNStretch.UI_Scaling_Show();
@@ -59,6 +99,11 @@ public class UIPlayerNotice_LevelUP : MonoBehaviour
 
     public void CloseNotice()
     {
+        print(isShowing);
+        if (isShowing == false) return;
+
+        isShowing = false;
+
         squashNStretch.UI_Scaling_Hide(() =>
         {
             Panel.gameObject.SetActive(false);

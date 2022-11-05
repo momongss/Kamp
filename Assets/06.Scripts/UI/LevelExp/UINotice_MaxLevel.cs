@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
-using DG.Tweening;
 
-public class UIPlayerNotice : MonoBehaviour
+public class UINotice_MaxLevel : MonoBehaviour
 {
-    public static UIPlayerNotice I { get; private set; }
-
-    public TextMeshProUGUI text;
+    public static UINotice_MaxLevel I { get; private set; }
 
     Canvas canvas;
 
     SquashNStretch squashNStretch;
+
+    public bool isShowing = false;
 
     protected void Awake()
     {
@@ -30,11 +29,10 @@ public class UIPlayerNotice : MonoBehaviour
         CloseNotice();
     }
 
-    public IEnumerator ShowNoticeDelay(string content, float delay, float timeout = -1f, UnityAction callback = null)
+    public IEnumerator ShowNoticeDelay(float delay, float timeout = -1f, UnityAction callback = null)
     {
         yield return new WaitForSeconds(delay);
 
-        text.text = content;
         canvas.enabled = true;
 
         if (timeout != -1)
@@ -50,18 +48,14 @@ public class UIPlayerNotice : MonoBehaviour
         }
     }
 
-    public void ShowNotice(string content = null, float timeout = -1f, UnityAction callback = null)
+    public void ShowNotice(float timeout = -1f, UnityAction callback = null)
     {
-        StartCoroutine(_ShowNotice(content, timeout, callback));
+        isShowing = true;
+        StartCoroutine(_ShowNotice(timeout, callback));
     }
 
-    public IEnumerator _ShowNotice(string content, float timeout, UnityAction callback)
+    public IEnumerator _ShowNotice(float timeout, UnityAction callback)
     {
-        if (content != null)
-        {
-            text.text = content;
-        }
-        
         canvas.enabled = true;
 
         squashNStretch.UI_Scaling_Show();
@@ -81,6 +75,10 @@ public class UIPlayerNotice : MonoBehaviour
 
     public void CloseNotice()
     {
+        if (isShowing == false) return;
+
+        isShowing = false;
+
         squashNStretch.UI_Scaling_Hide(() =>
         {
             canvas.enabled = false;

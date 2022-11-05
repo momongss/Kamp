@@ -8,6 +8,7 @@ public class ExpManager : MonoBehaviour
 {
     public static ExpManager Instance { get; private set; }
 
+    public int maxLevel;
     int level = 0;
     int exp = 0;
 
@@ -23,6 +24,8 @@ public class ExpManager : MonoBehaviour
         print(Application.persistentDataPath);
 
         Instance = this;
+
+        maxLevel = required_exp.Length;
 
         if (JsonData.isFileExist(exp_dataPath) == false)
         {
@@ -60,6 +63,8 @@ public class ExpManager : MonoBehaviour
         bool isLevelUP = Set_Level();
         if (!isLevelUP)
         {
+            UIPlayerNotice_LevelUP.I.CloseNotice();
+
             UIPlayerNotice.I.ShowNotice($"+{rewardExp}exp!!", 4f);
         }
     }
@@ -72,6 +77,8 @@ public class ExpManager : MonoBehaviour
         bool isLevelUP = Set_Level();
         if (!isLevelUP)
         {
+            UIPlayerNotice_LevelUP.I.CloseNotice();
+
             UIPlayerNotice.I.ShowNotice(msg, 4f);
         }
     }
@@ -90,7 +97,7 @@ public class ExpManager : MonoBehaviour
             }
         }
 
-        return required_exp.Length - 1;
+        return required_exp.Length;
     }
 
     void Set_Exp(int _exp)
@@ -110,8 +117,13 @@ public class ExpManager : MonoBehaviour
         level = _level;
         level_event.Invoke(level);
 
-        print("Sel level");
-        UIPlayerNotice_LevelUP.I.ShowNotice(level);
+        if (level != maxLevel)
+        {
+            UIPlayerNotice_LevelUP.I.ShowNotice(level);
+        } else
+        {
+            UINotice_MaxLevel.I.ShowNotice();
+        }
 
         return true;
     }

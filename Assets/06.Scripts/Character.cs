@@ -13,7 +13,9 @@ public class Character : MonoBehaviour
         Sheep = 1,
         Duck = 2,
         Cat = 3,
-        GGUM = 4
+        GGUM = 4,
+
+        None = -1
     }
 
     public Type type;
