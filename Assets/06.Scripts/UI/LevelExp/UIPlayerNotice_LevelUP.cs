@@ -46,25 +46,7 @@ public class UIPlayerNotice_LevelUP : MonoBehaviour
 
     public IEnumerator _ShowNotice(int level, float timeout, UnityAction callback)
     {
-        Character.Type type;
-        switch (level)
-        {
-            case 2:
-                type = Character.Type.Duck;
-                break;
-            case 3:
-                type = Character.Type.Sheep;
-                break;
-            case 4:
-                type = Character.Type.Cat;
-                break;
-            case 5:
-                type = Character.Type.GGUM;
-                break;
-            default:
-                type = Character.Type.None;
-                break;
-        }
+        Character.Type type = StatManager.characterUnlockLevelBook[level];
 
         if (type != Character.Type.None)
         {

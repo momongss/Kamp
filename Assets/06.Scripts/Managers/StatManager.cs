@@ -12,6 +12,18 @@ public class StatManager
         { 4, Character.Type.GGUM },
     };
 
+    public static Character.Type GetCharacter(int level)
+    {
+        if (characterUnlockLevelBook.ContainsKey(level))
+        {
+            return characterUnlockLevelBook[level];
+        }
+        else
+        {
+            return Character.Type.None;
+        }
+    }
+
     public static List<Character.Type> GetHavingCharacters(int level)
     {
         List<Character.Type> list = new List<Character.Type>();
