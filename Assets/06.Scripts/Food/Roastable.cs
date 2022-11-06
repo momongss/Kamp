@@ -101,6 +101,7 @@ public class Roastable : FoodPiece
     protected override FoodPiece foodPiecarize(GameObject Piece)
     {
         Roastable roastable = Piece.AddComponent<Roastable>();
+        roastable.enabled = true;
         roastable.cookTime = cookTime;
 
         return roastable;
