@@ -8,6 +8,8 @@ public class FoodSpotManager : MonoBehaviour
 
     public FoodSpot[] foodSpotList;
 
+    public int foodIndex = 0;
+
     private void Awake()
     {
         I = this;
@@ -26,24 +28,18 @@ public class FoodSpotManager : MonoBehaviour
     {
         FoodSpot foodSpot = GetEmptyFoodSpot();
 
-        if (foodSpot == null)
-        {
-            return;
-        }
-
         foodSpot.AssignFood(food);
     }
 
     FoodSpot GetEmptyFoodSpot()
     {
-        foreach (FoodSpot f in foodSpotList)
+        FoodSpot spot = foodSpotList[foodIndex];
+        foodIndex++;
+        if (foodIndex >= foodSpotList.Length)
         {
-            if (f.isPlated == false)
-            {
-                return f;
-            }
+            foodIndex = 0;
         }
 
-        return null;
+        return spot;
     }
 }

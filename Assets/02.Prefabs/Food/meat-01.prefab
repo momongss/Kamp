@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1460305140709683999}
   - component: {fileID: 1460305140709683996}
   - component: {fileID: 1460305140709683994}
+  - component: {fileID: -6838350372272330766}
   m_Layer: 0
   m_Name: meat-01
   m_TagString: Untagged
@@ -121,6 +122,8 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -189,6 +192,9 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
 --- !u!114 &1460305140709683994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b80e1f62d20dde48a2c2ff361d01e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasRigidbody: 1
+  rigid: {fileID: 0}
+  satiety: 10
   foodType: 0
   cookTime: 15
   currCookTimeUP: 0
@@ -212,6 +221,28 @@ MonoBehaviour:
   meatSide: {fileID: 8626522436013966798}
   meatFaceTexture: {fileID: 2800000, guid: 782c9081aebdba04cafa142a1c4482ff, type: 3}
   meatSideTexture: {fileID: 2800000, guid: 291c8cf714863bb48a2a858d196c6f06, type: 3}
+--- !u!114 &-6838350372272330766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766926284897668672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13dd47add8984149b4f6ed754547162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasRigidbody: 1
+  rigid: {fileID: 0}
+  satiety: 10
+  foodType: 7
+  cookTime: 15
+  currCookTime: 0
+  PS_cookSmoke: {fileID: 9024122708939914200}
+  PS_complete: {fileID: 5519407799457852134}
+  meatRenderer: {fileID: 0}
+  meatCookedTexture: {fileID: 0}
 --- !u!1 &2809437273297681681
 GameObject:
   m_ObjectHideFlags: 0

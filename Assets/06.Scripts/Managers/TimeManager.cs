@@ -30,6 +30,7 @@ public class TimeManager : MonoBehaviour
         RenderSettings.skybox = skybox_mat_day;
         // RenderSettings.ambientLight = ambientLight_day;
 
+        main_light.intensity = 1f;
         skybox_mat_day.SetFloat("_Exposure", 0.75f);
     }
 

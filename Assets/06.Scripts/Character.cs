@@ -71,9 +71,9 @@ public class Character : MonoBehaviour
     public void GotoEat()
     {
         seat = PlaceEattingZone.I.GetSeat();
-        seat.Sit();
+        seat.Sit(transform);
 
-        ChangeState(State.GotoEat);
+        // ChangeState(State.GotoEat);
     }
 
     public void OnSelected()
