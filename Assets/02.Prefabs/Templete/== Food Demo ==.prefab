@@ -777,10 +777,15 @@ MonoBehaviour:
   currentTime_Hour: 12
   darkStartTime_Hour: 17
   timeScale: 10
-  darkrate_exposure: 0.014
+  darkrate_ambientLight: 0.0005
+  darkrate_exposure: 0.018
   darkrate_light: 0.02
-  ambientLight_day: {r: 1, g: 1, b: 1, a: 0}
-  ambientLight_night: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 0}
+  ambientLight_day:
+    serializedVersion: 2
+    rgba: 16316664
+  ambientLight_night:
+    serializedVersion: 2
+    rgba: 0
   state: 0
 --- !u!1 &206145945
 GameObject:
