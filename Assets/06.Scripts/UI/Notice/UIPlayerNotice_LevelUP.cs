@@ -33,6 +33,8 @@ public class UIPlayerNotice_LevelUP : UINotice
 
         Character.Type type = StatManager.characterUnlockLevelBook[level];
 
+
+
         if (type != Character.Type.None)
         {
             foreach (var c in characterUIList)

@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 147041310}
+  Panel: {fileID: 0}
 --- !u!114 &13928225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,6 +777,7 @@ MonoBehaviour:
   main_light: {fileID: 0}
   currentTime_Hour: 12
   darkStartTime_Hour: 17
+  campingEndTime_Hour: 15
   timeScale: 10
   darkrate_ambientLight: 0.0005
   darkrate_exposure: 0.018
@@ -2246,7 +2248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcb6dcd8aec6c14cae4809c0f4ac8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isShowing: 0
+  text: {fileID: 0}
+  Panel: {fileID: 0}
 --- !u!1 &562946639
 GameObject:
   m_ObjectHideFlags: 0
