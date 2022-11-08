@@ -17,7 +17,7 @@ public class ExpManager : MonoBehaviour
 
     const string exp_dataPath = "/Exp.json";
 
-    int[] required_exp = new int[] { 30, 50, 80, 120, 150, 180 };
+    int[] required_exp = new int[] { 30, 50, 80, 120, 150 };
 
     private void Awake()
     {
@@ -57,8 +57,6 @@ public class ExpManager : MonoBehaviour
 
     public void Add_Exp(int rewardExp)
     {
-        print($"{rewardExp} exp");
-
         Set_Exp(exp + rewardExp);
         bool isLevelUP = Set_Level();
         if (!isLevelUP)
@@ -71,8 +69,6 @@ public class ExpManager : MonoBehaviour
 
     public void Add_Exp(int rewardExp, string msg)
     {
-        print($"{rewardExp} exp");
-
         Set_Exp(exp + rewardExp);
         bool isLevelUP = Set_Level();
         if (!isLevelUP)
@@ -102,6 +98,11 @@ public class ExpManager : MonoBehaviour
 
     void Set_Exp(int _exp)
     {
+        if (level == maxLevel)
+        {
+            return;
+        }
+
         exp = _exp;
         exp_event.Invoke(exp);
 
@@ -120,7 +121,8 @@ public class ExpManager : MonoBehaviour
         if (level != maxLevel)
         {
             UIPlayerNotice_LevelUP.I.ShowNotice(level);
-        } else
+        }
+        else
         {
             UINotice_MaxLevel.I.ShowNotice();
         }

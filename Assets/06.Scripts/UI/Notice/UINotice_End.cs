@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
-using TMPro;
-using UnityEngine.Events;
 
-public class UINotice_MaxLevel : UINotice
+public class UINotice_End : UINotice
 {
-    public static UINotice_MaxLevel I { get; private set; }
+    public static UINotice_End I { get; private set; }
 
     protected override void Awake()
     {

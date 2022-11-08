@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using DG.Tweening;
 
-public class UINotice_MaxLevel : UINotice
+public class UIPlayerNotice : UINotice
 {
-    public static UINotice_MaxLevel I { get; private set; }
+    public static UIPlayerNotice I { get; private set; }
 
     protected override void Awake()
     {

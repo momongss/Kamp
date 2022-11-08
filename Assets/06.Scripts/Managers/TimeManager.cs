@@ -11,8 +11,8 @@ public class TimeManager : MonoBehaviour
     public Light main_light;
 
     public float currentTime_Hour = 12f;
-
-    public float darkStartTime_Hour = 17f;
+    public float darkStartTime_Hour = 14f;
+    public float campingEndTime_Hour = 15f;
 
     public float timeScale = 10f;
 
@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
     public Color32 ambientLight_day;
     public Color32 ambientLight_night;
 
-    public enum State { Day, Night }
+    public enum State { Day, Night, End }
     public State state = State.Day;
 
     private void Start()
@@ -52,6 +52,9 @@ public class TimeManager : MonoBehaviour
             case State.Night:
                 UINotice_NightStart.I.ShowNotice();
                 break;
+            case State.End:
+
+                break;
         }
 
         state = newState;
@@ -64,7 +67,7 @@ public class TimeManager : MonoBehaviour
         switch (state)
         {
             case State.Day:
-                if (darkStartTime_Hour <= currentTime_Hour)
+                if (currentTime_Hour >= darkStartTime_Hour)
                 {
                     RenderSettings.ambientLight = new Color(
                         RenderSettings.ambientLight.r - darkrate_ambientLight,
@@ -83,7 +86,10 @@ public class TimeManager : MonoBehaviour
                 break;
 
             case State.Night:
-
+                if (currentTime_Hour >= campingEndTime_Hour)
+                {
+                    ChangeState(State.End);
+                }
                 break;
         }
     }
