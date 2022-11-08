@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class EquipManager : MonoBehaviour
 {
-    public static Player I { get; private set; }
-
-    public Transform spawnBallPoint;
+    public static EquipManager I { get; private set; }
 
     private void Awake()
     {
         I = this;
     }
+
 }
