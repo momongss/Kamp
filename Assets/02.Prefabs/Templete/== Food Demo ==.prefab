@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 147041310}
+  textLegacy: {fileID: 0}
   Panel: {fileID: 820421604}
 --- !u!114 &13928225
 MonoBehaviour:
@@ -1589,6 +1590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1878288306}
+  textLegacy: {fileID: 0}
   Panel: {fileID: 637822792}
   T_characterParent: {fileID: 1140715440}
 --- !u!1 &362661613
@@ -3044,6 +3046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 0}
+  textLegacy: {fileID: 0}
   Panel: {fileID: 0}
 --- !u!1 &562946639
 GameObject:
@@ -8835,6 +8838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 0}
+  textLegacy: {fileID: 0}
   Panel: {fileID: 1836616123}
 --- !u!1 &1830255745
 GameObject:

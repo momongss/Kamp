@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.UI;
 
 public class UINotice : MonoBehaviour
 {
     public TextMeshProUGUI text;
+    public Text textLegacy;
 
     public GameObject Panel;
 
@@ -49,7 +51,14 @@ public class UINotice : MonoBehaviour
     {
         if (content != null)
         {
-            text.text = content;
+            if (textLegacy)
+            {
+                textLegacy.text = content;
+            }
+            else if (text)
+            {
+                text.text = content;
+            }
         }
 
         Panel.SetActive(true);

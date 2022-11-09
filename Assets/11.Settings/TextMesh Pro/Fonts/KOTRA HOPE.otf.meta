@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - KOTRA HOPE
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: db1dfe11aa86726479bc8a78d04f6d54, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
