@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 4816750910655944}
   - component: {fileID: 33656665792712496}
   - component: {fileID: 23359351952788146}
-  - component: {fileID: 6609549497299633967}
   - component: {fileID: 2627330657106044640}
   - component: {fileID: 66587442581078944}
   - component: {fileID: 1770149137604545012}
   - component: {fileID: 1235446664331437474}
   - component: {fileID: 4144913120013224057}
+  - component: {fileID: -5988085765311381492}
   m_Layer: 0
-  m_Name: Tent-01
+  m_Name: Tent-05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152899195176816}
-  m_Mesh: {fileID: 4300000, guid: 0b923420605699b46a9e3245474c6bcf, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 56177e43cf1674f4ab0dcb49587eb752, type: 3}
 --- !u!23 &23359351952788146
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79bd29b437af59d449ee2fbc6e00a4c7, type: 2}
+  - {fileID: 2100000, guid: 2dff0489921d8f549848811dc5688482, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,19 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6609549497299633967
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152899195176816}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.8404183, y: 1.9877921, z: 0.23862076}
-  m_Center: {x: 0, y: 0.95688814, z: -1.806309}
 --- !u!65 &2627330657106044640
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,8 +101,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.34700203, y: 1.9877921, z: 4.4192333}
-  m_Center: {x: 1.7509971, y: 0.95688814, z: 0.2839973}
+  m_Size: {x: 0.34700203, y: 1.9877921, z: 2.5128388}
+  m_Center: {x: 1.7509971, y: 0.95688814, z: 0.004778087}
 --- !u!65 &66587442581078944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.31406593, y: 1.9877921, z: 4.4192333}
-  m_Center: {x: -1.7631762, y: 0.95688814, z: 0.2839973}
+  m_Size: {x: 0.31406593, y: 1.9877921, z: 2.5128393}
+  m_Center: {x: -1.7631762, y: 0.95688814, z: 0.004777968}
 --- !u!54 &1770149137604545012
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,9 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a794ead20869d6d4f99cc260f9a598d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simple_interactable: {fileID: 0}
-  grab_interactable: {fileID: 4144913120013224057}
-  simple_colli: {fileID: 0}
   PS_DustBurst: {fileID: 8804583366025461226}
 --- !u!114 &4144913120013224057
 MonoBehaviour:
@@ -286,6 +270,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-5988085765311381492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152899195176816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124f867624f3460479ef0732abe3f30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originScale: {x: 1, y: 1, z: 1}
+  speed: 2
 --- !u!1001 &2516599610401181109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -296,57 +294,27 @@ PrefabInstance:
     - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
         type: 3}
       propertyPath: lengthInSec
-      value: 2.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
-        type: 3}
-      propertyPath: ShapeModule.type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
-        type: 3}
-      propertyPath: ShapeModule.m_Rotation.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
-        type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 3
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
-        type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 2
+      value: 10.13
       objectReference: {fileID: 0}
     - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
         type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
-      value: 3
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6403252182692130911, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
         type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].repeatInterval
-      value: 0.4
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6403252182692130976, guid: 1a495d3039e0d4e47b25b20d7c7a4d5d,
         type: 3}
