@@ -20,7 +20,8 @@ public class UIEquipButton : MonoBehaviour
         button.onClick.AddListener(() =>
         {
             SpawnItemBall();
-            gameObject.SetActive(false);
+
+            UIEquipment.I.CloseNotice();
         });
     }
 

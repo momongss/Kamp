@@ -12,4 +12,12 @@ public class Player : MonoBehaviour
     {
         I = this;
     }
+
+    private void Start()
+    {
+        XRInput.I.SubscribePrimaryButton(() =>
+        {
+            UIEquipment.I.ToggleNotice();
+        });
+    }
 }

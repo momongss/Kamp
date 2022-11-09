@@ -27,6 +27,18 @@ public class UINotice : MonoBehaviour
         CloseNotice();
     }
 
+    public virtual void ToggleNotice()
+    {
+        if (isShowing)
+        {
+            CloseNotice();
+        }
+        else
+        {
+            ShowNotice();
+        }
+    }
+
     public virtual void ShowNotice(string content = null, float timeout = -1f, UnityAction callback = null)
     {
         isShowing = true;
