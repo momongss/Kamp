@@ -25,11 +25,13 @@ public class UISelectCharacter : UIPanel
             c.gameObject.SetActive(false);
         }
 
-        foreach (CharacterData data in Char_Map_Info.I.GetHavingCharacters())
+        int level = ExpManager.Instance.Get_Level();
+
+        foreach (Character.Type type in StatManager.GetHavingCharacters(level))
         {
             foreach (var c in c_buttons)
             {
-                if (c.type == data.type)
+                if (c.type == type)
                 {
                     c.gameObject.SetActive(true);
                     break;

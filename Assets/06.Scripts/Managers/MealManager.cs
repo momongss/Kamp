@@ -14,15 +14,16 @@ public class MealManager : MonoBehaviour
 
     public void StartMeal()
     {
-        print("식사 시작!");
         foreach (Character c in CampingManager.Instance.activeCharacterList)
         {
             c.GotoEat();
         }
 
+        Seat seat = PlaceEattingZone.I.GetSeat();
+        seat.Sit(Player.I.transform);
+
         List<Food> foodList = CookManager.Instance.food_completed_list;
 
-        print(foodList.Count);
         foreach (Food f in foodList)
         {
             FoodSpotManager.I.PutFood(f);

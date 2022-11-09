@@ -3,7 +3,12 @@ guid: 8b26cc28a2613ea43a0f3e646a1db059
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rigid: {instanceID: 0}
+  - meatRenderer: {instanceID: 0}
+  - cookedMeshFilter: {instanceID: 0}
+  - PS_Smoke: {fileID: 7599846375586226257, guid: 6dc9df088ca0b6948992bbbb003559b1,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

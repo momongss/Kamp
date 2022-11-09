@@ -432,11 +432,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasRigidbody: 1
   rigid: {fileID: 0}
+  satiety: 10
   foodType: 18
   isCutable: 1
   isRoastable: 0
   isStickable: 0
-  cookTime: 5
+  cookTime: 7
   currCookTime: 0
   meatRenderer: {fileID: 0}
   cookedMeshFilter: {fileID: 0}

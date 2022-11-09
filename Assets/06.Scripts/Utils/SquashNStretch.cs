@@ -19,8 +19,6 @@ public class SquashNStretch : MonoBehaviour
             originScale = transform.localScale;
         }
 
-        print(originScale);
-
         Squash_N_Stretch();
     }
 
@@ -40,7 +38,7 @@ public class SquashNStretch : MonoBehaviour
     public void UI_Scaling_Hide(UnityAction callback = null)
     {
         transform
-            .DOScale(originScale * 0.6f, 0.25f)
+            .DOScale(originScale * 1.2f, 0.25f)
             .SetEase(Ease.InOutBounce)
             .OnComplete(() =>
             {

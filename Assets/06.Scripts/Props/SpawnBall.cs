@@ -9,6 +9,14 @@ public class SpawnBall : MonoBehaviour
 
     public bool isThrowed = false;
 
+    Rigidbody rigid;
+
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody>();
+        rigid.constraints = RigidbodyConstraints.FreezePosition;
+    }
+
     void Spawn()
     {
         Instantiate(spawnItem, transform.position, Quaternion.identity);
@@ -34,7 +42,9 @@ public class SpawnBall : MonoBehaviour
 
     public void OnSelected()
     {
+        rigid.constraints = RigidbodyConstraints.None;
 
+        print("Select");
     }
 
     public void OnDeSelected()

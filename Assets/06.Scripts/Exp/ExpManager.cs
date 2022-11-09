@@ -8,6 +8,7 @@ public class ExpManager : MonoBehaviour
 {
     public static ExpManager Instance { get; private set; }
 
+    public int maxLevel;
     int level = 0;
     int exp = 0;
 
@@ -16,13 +17,15 @@ public class ExpManager : MonoBehaviour
 
     const string exp_dataPath = "/Exp.json";
 
-    int[] required_exp = new int[] { 30, 50, 80, 120, 150, 180 };
+    int[] required_exp = new int[] { 30, 50, 80, 120, 150 };
 
     private void Awake()
     {
         print(Application.persistentDataPath);
 
         Instance = this;
+
+        maxLevel = required_exp.Length;
 
         if (JsonData.isFileExist(exp_dataPath) == false)
         {
@@ -54,24 +57,24 @@ public class ExpManager : MonoBehaviour
 
     public void Add_Exp(int rewardExp)
     {
-        print($"{rewardExp} exp");
-
         Set_Exp(exp + rewardExp);
         bool isLevelUP = Set_Level();
         if (!isLevelUP)
         {
+            UIPlayerNotice_LevelUP.I.CloseNotice();
+
             UIPlayerNotice.I.ShowNotice($"+{rewardExp}exp!!", 4f);
         }
     }
 
     public void Add_Exp(int rewardExp, string msg)
     {
-        print($"{rewardExp} exp");
-
         Set_Exp(exp + rewardExp);
         bool isLevelUP = Set_Level();
         if (!isLevelUP)
         {
+            UIPlayerNotice_LevelUP.I.CloseNotice();
+
             UIPlayerNotice.I.ShowNotice(msg, 4f);
         }
     }
@@ -90,11 +93,16 @@ public class ExpManager : MonoBehaviour
             }
         }
 
-        return required_exp.Length - 1;
+        return required_exp.Length;
     }
 
     void Set_Exp(int _exp)
     {
+        if (level == maxLevel)
+        {
+            return;
+        }
+
         exp = _exp;
         exp_event.Invoke(exp);
 
@@ -110,8 +118,14 @@ public class ExpManager : MonoBehaviour
         level = _level;
         level_event.Invoke(level);
 
-        print("Sel level");
-        UIPlayerNotice_LevelUP.I.ShowNotice(level);
+        if (level != maxLevel)
+        {
+            UIPlayerNotice_LevelUP.I.ShowNotice(level);
+        }
+        else
+        {
+            UINotice_MaxLevel.I.ShowNotice();
+        }
 
         return true;
     }
