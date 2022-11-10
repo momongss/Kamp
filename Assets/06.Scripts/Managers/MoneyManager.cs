@@ -42,6 +42,11 @@ public class MoneyManager : MonoBehaviour
         Event_money.AddListener(e);
     }
 
+    public void AddMoney(int quantity)
+    {
+        SaveMoney(money + quantity);
+    }
+
     public bool UseMoney(int quantity)
     {
         if (money >= quantity)

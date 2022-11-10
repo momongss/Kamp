@@ -17,8 +17,6 @@ public class Kochi : Food
 
     bool isRoasted = false;
 
-    FoodPiece currPiece;
-
     protected override void Awake()
     {
         base.Awake();

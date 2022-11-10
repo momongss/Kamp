@@ -11,8 +11,10 @@ public class XRInput : MonoBehaviour
 
     public XRNode node;
     public bool isPrimaryButtonPressed = false;
+    public bool isSecondaryButtonPressed = false;
 
     public UnityEvent primaryButtonEvent = new UnityEvent();
+    public UnityEvent secondaryButtonEvent = new UnityEvent();
 
     private void Awake()
     {
@@ -22,6 +24,8 @@ public class XRInput : MonoBehaviour
     void Update()
     {
         InputHelpers.IsPressed(InputDevices.GetDeviceAtXRNode(node), InputHelpers.Button.PrimaryButton, out bool primaryButton, 0.5f);
+        InputHelpers.IsPressed(InputDevices.GetDeviceAtXRNode(node), InputHelpers.Button.SecondaryButton, out bool secondaryButton, 0.5f);
+
         if (primaryButton)
         {
             if (isPrimaryButtonPressed == false)
@@ -35,10 +39,29 @@ public class XRInput : MonoBehaviour
         {
             isPrimaryButtonPressed = false;
         }
+
+        if (secondaryButton)
+        {
+            if (isSecondaryButtonPressed == false)
+            {
+                secondaryButtonEvent.Invoke();
+            }
+
+            isSecondaryButtonPressed = true;
+        }
+        else
+        {
+            isSecondaryButtonPressed = false;
+        }
     }
 
     public void SubscribePrimaryButton(UnityAction action)
     {
         primaryButtonEvent.AddListener(action);
+    }
+
+    public void SubscribeSecondaryButton(UnityAction action)
+    {
+        secondaryButtonEvent.AddListener(action);
     }
 }

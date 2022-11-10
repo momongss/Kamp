@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MissionManager : MonoBehaviour
@@ -11,29 +12,91 @@ public class MissionManager : MonoBehaviour
 
     bool isDoingMission = false;
 
-    public List<Dictionary<string, object>> rewardMap;
+    public List<Dictionary<string, object>> mission_list;
+    public List<Dictionary<string, object>> rewardMap_Exp;
+    public List<Dictionary<string, object>> rewardMap_Money;
+
+    public Transform Tr_missionUI_Parent;
+    UIMission[] missionUIs;
 
     int max_level;
 
-    public Type[] Day1_missions;
+    public Type[][] missions;
 
-    Type[] curr_Missions;
+    public int daycount = 16;
+
+    public int currDay = 0;
+
+    public Type[] Mission_Day0;
+    public Type[] Mission_Day1;
+    public Type[] Mission_Day2;
+    public Type[] Mission_Day3;
+    public Type[] Mission_Day4;
+    public Type[] Mission_Day5;
+    public Type[] Mission_Day6;
+    public Type[] Mission_Day7;
+    public Type[] Mission_Day8;
+    public Type[] Mission_Day9;
+    public Type[] Mission_Day10;
+    public Type[] Mission_Day11;
+    public Type[] Mission_Day12;
+    public Type[] Mission_Day13;
+    public Type[] Mission_Day14;
+    public Type[] Mission_Day15;
+
+    public UIMissionTable UI_MissionTable;
+
     int curr_mission_index = 0;
 
     private void Awake()
     {
         I = this;
 
-        rewardMap = CSVReader.Read("RewardMap");
+        missionUIs = new UIMission[Tr_missionUI_Parent.childCount];
 
-        max_level = rewardMap.Count - 1;
+        for (int i = 0; i < Tr_missionUI_Parent.childCount; i++)
+        {
+            missionUIs[i] = Tr_missionUI_Parent.GetChild(i).GetComponent<UIMission>();
 
-        curr_Missions = Day1_missions;
+            if (Mission_Day1.Contains(missionUIs[i].missionType))
+            {
+                missionUIs[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                missionUIs[i].gameObject.SetActive(false);
+            }
+        }
+
+        rewardMap_Exp = CSVReader.Read("RewardMap_Exp");
+        rewardMap_Money = CSVReader.Read("RewardMap_Exp");
+
+        max_level = rewardMap_Exp.Count - 1;
+
+        missions = new Type[daycount][];
+        missions[0] = Mission_Day0;
+        missions[1] = Mission_Day1;
+        missions[2] = Mission_Day2;
+        missions[3] = Mission_Day3;
+        missions[4] = Mission_Day4;
+        missions[5] = Mission_Day5;
+        missions[6] = Mission_Day6;
+        missions[7] = Mission_Day7;
+        missions[8] = Mission_Day8;
+        missions[9] = Mission_Day9;
+        missions[10] = Mission_Day10;
+        missions[11] = Mission_Day11;
+        missions[12] = Mission_Day12;
+        missions[13] = Mission_Day13;
+        missions[14] = Mission_Day14;
+        missions[15] = Mission_Day15;
+
+        UI_MissionTable.SetMissions(missions[currDay]);
     }
 
     public void StartMissionRoutines()
     {
-        StartCoroutine(MissionStart(curr_Missions[curr_mission_index], 0f));
+        StartCoroutine(MissionStart(missions[currDay][curr_mission_index], 0f));
     }
 
     IEnumerator MissionStart(Type _type, float delay)
@@ -61,12 +124,12 @@ public class MissionManager : MonoBehaviour
         type = Type.None;
         isDoingMission = false;
 
-        if (curr_mission_index < curr_Missions.Length - 1)
+        if (curr_mission_index < missions[currDay].Length - 1)
         {
             GiveReward(_type);
 
             curr_mission_index++;
-            StartCoroutine(MissionStart(curr_Missions[curr_mission_index], 5f));
+            StartCoroutine(MissionStart(missions[currDay][curr_mission_index], 5f));
         }
         else
         {
@@ -86,7 +149,28 @@ public class MissionManager : MonoBehaviour
 
         string s_type = _type.ToString();
 
-        int rewardExp = (int)rewardMap[level][s_type];
+        int rewardExp;
+        if (level < rewardMap_Exp.Count)
+        {
+            rewardExp = (int)rewardMap_Exp[level][s_type];
+        }
+        else
+        {
+            rewardExp = level * 100;
+        }
+
+        int rewardMoney;
+        if (level < rewardMap_Money.Count)
+        {
+            rewardMoney = (int)rewardMap_Money[level][s_type];
+        }
+        else
+        {
+            rewardMoney = level * 100;
+        }
+
+
+        MoneyManager.I.AddMoney(rewardMoney);
 
         if (isCompleteAllMission == false)
         {

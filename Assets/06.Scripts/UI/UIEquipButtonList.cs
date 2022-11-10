@@ -6,12 +6,14 @@ public class UIEquipButtonList : MonoBehaviour
 {
     UIEquipButton[] uIEquipButtons;
 
-    private void Awake()
+    private void Start()
     {
         uIEquipButtons = GetComponentsInChildren<UIEquipButton>(true);
 
         foreach (var b in uIEquipButtons)
         {
+            print(b);
+            print(ItemManager.I);
             int itemCount = ItemManager.I.GetItemCount(b.type);
             if (itemCount > 0)
             {
