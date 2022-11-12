@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
         MoveToPlayer,
         TalkToPlayer,
         GotoEat,
-        Meal
+        WaitMeal
     }
     public State state = State.Idle;
 
@@ -68,17 +68,9 @@ public class Character : MonoBehaviour
 
     Seat seat;
 
-    public void GotoEat()
-    {
-        seat = PlaceEattingZone.I.GetSeat();
-        seat.Sit(transform);
-
-        // ChangeState(State.GotoEat);
-    }
-
     public void OnSelected()
     {
-        squashNStretch.Squash_N_Stretch(1.4f, 0.7f, 1.4f);
+        squashNStretch.Squash_N_Stretch(1.15f, 0.85f, 1.15f);
 
         float distance = Vector3.Distance(transform.position, Player.I.transform.position);
 
@@ -91,6 +83,16 @@ public class Character : MonoBehaviour
             ChangeState(State.TalkToPlayer);
             transform.LookAt(Player.I.transform);
         }
+    }
+
+    public void GiveFood(Food food)
+    {
+        var effect = Instantiate(EffectPack.I.Confetti_01, transform.position, Quaternion.identity);
+
+        speechBubble.Talk("³È³È.. °í¸¶¿ö!!", 4f);
+
+        Destroy(food.gameObject);
+        Destroy(effect.gameObject, 5f);
     }
 
     void SetAgentWalkable(bool isActive)
@@ -195,10 +197,11 @@ public class Character : MonoBehaviour
                 SetAgentWalkable(true);
                 animator.ResetTrigger("IDLE");
                 animator.SetTrigger("WALK");
+                seat = PlaceEattingZone.I.GetSeat();
                 SetMoveDest(seat.transform.position);
                 break;
-            case State.Meal:
-                transform.LookAt(PlaceEattingZone.I.transform.position);
+            case State.WaitMeal:
+                transform.LookAt(Player.I.transform);
                 SetAgentWalkable(false);
                 animator.SetTrigger("IDLE");
                 animator.ResetTrigger("WALK");
@@ -246,10 +249,6 @@ public class Character : MonoBehaviour
                 break;
 
             case State.ArrivalToCampground:
-                if (curTime - stateTimer > 2f)
-                {
-                    ChangeState(State.FollowPlayer);
-                }
                 break;
 
             case State.FollowPlayer:
@@ -283,12 +282,12 @@ public class Character : MonoBehaviour
                 break;
 
             case State.GotoEat:
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (agent.pathPending == false && agent.remainingDistance <= agent.stoppingDistance)
                 {
-                    ChangeState(State.Meal);
+                    ChangeState(State.WaitMeal);
                 }
                 break;
-            case State.Meal:
+            case State.WaitMeal:
 
                 break;
             default:
@@ -315,7 +314,7 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        CharacterManager.Instance.RegisterCharacter(this);
+        CharacterManager.I.RegisterCharacter(this);
 
         navPath = new NavMeshPath();
 
@@ -348,6 +347,12 @@ public class Character : MonoBehaviour
                 }
                 break;
             case State.TalkToPlayer:
+                break;
+            case State.WaitMeal:
+                if (other.CompareTag(Tag.Food))
+                {
+
+                }
                 break;
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectPack : MonoBehaviour
-{ 
+{
     public static EffectPack I { get; private set; }
 
     private void Awake()
@@ -12,4 +12,8 @@ public class EffectPack : MonoBehaviour
     }
 
     public ParticleSystem PS_Smoke;
+
+    [Header("Confetti")]
+    public ParticleSystem Confetti_01;
+    public ParticleSystem Confetti_02;
 }

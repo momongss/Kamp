@@ -25,7 +25,7 @@ public class FoodPiece : Food
 
         if (other.CompareTag(Tag.Pot))
         {
-            CookManager.Instance.OnCompleteWork(this, Action.PutInPot);
+            CookManager.I.OnCompleteWork(this, Action.PutInPot);
         }
         else if (other.CompareTag(Tag.Kochi))
         {
@@ -111,7 +111,7 @@ public class FoodPiece : Food
         Destroy(grabInteractable);
         Destroy(rigid);
 
-        CookManager.Instance.OnCompleteWork(this, Action.Skewer);
+        CookManager.I.OnCompleteWork(this, Action.Skewer);
     }
 
     public void Cut(int pieceNum)
@@ -191,7 +191,7 @@ public class FoodPiece : Food
             foodPiece.isStickable = true;
             foodPiece.transform.parent = null;
 
-            CookManager.Instance.OnCompleteWork(this, Action.Cut);
+            CookManager.I.OnCompleteWork(this, Action.Cut);
         }
 
         foodPiece.foodType = foodType;

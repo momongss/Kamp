@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEngine.Events;
 
 public class CampingManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class CampingManager : MonoBehaviour
 
     public static CampingManager Instance { get; private set; }
 
+    UnityAction[] campingStory;
+    int storyIndex = 0;
+
     private void Awake()
     {
         Instance = this;
@@ -23,7 +27,32 @@ public class CampingManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SetState(State.Greet_Characters, 2f));
+        campingStory = new UnityAction[3];
+        campingStory[0] = () =>
+        {
+            SpawnCharacters();
+            UIPlayerNotice.I.ShowNotice("캐릭터들이 도착했어요!!", 4f, PlayNextStep);
+        };
+
+        campingStory[1] = () =>
+        {
+            UIMissionTable.I.ShowNotice(null, 4f, PlayNextStep);
+        };
+
+        campingStory[2] = () =>
+        {
+            // 식사시간
+            UIPlayerNotice.I.ShowNotice("식사 시간이예요! 요리를 하세요", 4f);
+            CookManager.I.StartCooking();
+        };
+
+        PlayNextStep();
+    }
+
+    void PlayNextStep()
+    {
+        campingStory[storyIndex]();
+        storyIndex++;
     }
 
     public void SpawnCharacters()
@@ -56,19 +85,5 @@ public class CampingManager : MonoBehaviour
     public void OnCompleteMissionRoutines()
     {
 
-    }
-
-    IEnumerator SetState(State newState, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        state = newState;
-
-        switch (state)
-        {
-            case State.Greet_Characters:
-                UIPlayerNotice.I.ShowNotice("캐릭터들이 도착했어요!! 마중 나가볼까요??");
-                break;
-        }
     }
 }

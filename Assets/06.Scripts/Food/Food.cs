@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Android.Types;
 using UnityEngine;
 
 public class Food : MonoBehaviour
@@ -8,6 +9,9 @@ public class Food : MonoBehaviour
     public Rigidbody rigid;
 
     public int satiety = 10;
+
+    public bool isCompleted = false;
+    public bool isGived = false;
 
     protected virtual void Awake()
     {
@@ -32,10 +36,22 @@ public class Food : MonoBehaviour
             FloatingFood _f = gameObject.AddComponent<FloatingFood>();
             _f.pot = other.GetComponent<Pot>(); ;
         }
+
         else if (other.CompareTag(Tag.Stew))
         {
             Stew stew = other.GetComponent<Stew>();
             stew.PutFood(this);
+        }
+
+        if (isCompleted && !isGived)
+        {
+            print($"Coll {other.gameObject.layer}");
+            if (other.gameObject.layer == Layer.Character)
+            {
+                isGived = true;
+                Character character = other.GetComponent<Character>();
+                character.GiveFood(this);
+            }
         }
     }
 

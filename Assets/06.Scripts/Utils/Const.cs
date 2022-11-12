@@ -22,6 +22,12 @@ public class Layer
     public const int UI = 5;
     public const int A = 6;
     public const int B = 7;
+
+    public const int Character = 8;
+    public const int HandInteraction = 9;
+
+    public const int PostProcessing = 30;
+    public const int Teleport = 31;
 }
 
 public class Tag

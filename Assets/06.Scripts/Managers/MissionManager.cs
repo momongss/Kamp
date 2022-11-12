@@ -19,7 +19,7 @@ public class MissionManager : MonoBehaviour
     public Transform Tr_missionUI_Parent;
     UIMission[] missionUIs;
 
-    int max_level;
+    int max_day;
 
     public Type[][] missions;
 
@@ -69,9 +69,9 @@ public class MissionManager : MonoBehaviour
         }
 
         rewardMap_Exp = CSVReader.Read("RewardMap_Exp");
-        rewardMap_Money = CSVReader.Read("RewardMap_Exp");
+        rewardMap_Money = CSVReader.Read("RewardMap_Money");
 
-        max_level = rewardMap_Exp.Count - 1;
+        max_day = rewardMap_Exp.Count - 1;
 
         missions = new Type[daycount][];
         missions[0] = Mission_Day0;
@@ -139,36 +139,48 @@ public class MissionManager : MonoBehaviour
         }
     }
 
+    public int GetExpReward(Type _type)
+    {
+
+        if (currDay > max_day)
+        {
+            Debug.LogError($"만렙 이상의 레벨 발생. 만렙 : {max_day}, 발생한 레벨 : {currDay}");
+        }
+
+        int rewardExp;
+        if (currDay < rewardMap_Exp.Count)
+        {
+            rewardExp = (int)rewardMap_Exp[currDay][_type.ToString()];
+        }
+        else
+        {
+            rewardExp = currDay * 100;
+        }
+
+        return rewardExp;
+    }
+
+    public int GetMoneyReward(Type _type)
+    {
+        int rewardMoney;
+        if (currDay < rewardMap_Money.Count)
+        {
+            rewardMoney = (int)rewardMap_Money[currDay][_type.ToString()];
+        }
+        else
+        {
+            rewardMoney = currDay * 100;
+        }
+
+        return rewardMoney;
+    }
+
     void GiveReward(Type _type, bool isCompleteAllMission = false)
     {
         int level = ExpManager.Instance.Get_Level();
-        if (level > max_level)
-        {
-            Debug.LogError($"만렙 이상의 레벨 발생. 만렙 : {max_level}, 발생한 레벨 : {level}");
-        }
 
-        string s_type = _type.ToString();
-
-        int rewardExp;
-        if (level < rewardMap_Exp.Count)
-        {
-            rewardExp = (int)rewardMap_Exp[level][s_type];
-        }
-        else
-        {
-            rewardExp = level * 100;
-        }
-
-        int rewardMoney;
-        if (level < rewardMap_Money.Count)
-        {
-            rewardMoney = (int)rewardMap_Money[level][s_type];
-        }
-        else
-        {
-            rewardMoney = level * 100;
-        }
-
+        int rewardExp = GetExpReward(_type);
+        int rewardMoney = GetMoneyReward(_type);
 
         MoneyManager.I.AddMoney(rewardMoney);
 

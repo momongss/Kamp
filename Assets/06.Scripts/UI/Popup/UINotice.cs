@@ -16,12 +16,25 @@ public class UINotice : MonoBehaviour
 
     protected bool isShowing = false;
 
+    protected UnityAction noticeCloseCallback = null;
+
+    Button Button_close;
+
     protected virtual void Awake()
     {
         squashNStretch = GetComponentInChildren<SquashNStretch>(true);
 
         if (Panel == null) Panel = transform.GetChild(0).gameObject;
         Panel.SetActive(false);
+
+        Button_close = Panel.GetComponent<Button>();
+        if (Button_close)
+        {
+            Button_close.onClick.AddListener(() =>
+            {
+                CloseNotice();
+            });
+        }
     }
 
     private void Start()
@@ -44,10 +57,12 @@ public class UINotice : MonoBehaviour
     public virtual void ShowNotice(string content = null, float timeout = -1f, UnityAction callback = null)
     {
         isShowing = true;
-        StartCoroutine(_ShowNotice(content, timeout, callback));
+
+        if (callback != null) noticeCloseCallback = callback;
+        StartCoroutine(_ShowNotice(content, timeout));
     }
 
-    public virtual IEnumerator _ShowNotice(string content, float timeout, UnityAction callback)
+    public virtual IEnumerator _ShowNotice(string content, float timeout)
     {
         if (content != null)
         {
@@ -71,11 +86,6 @@ public class UINotice : MonoBehaviour
 
             CloseNotice();
         }
-
-        if (callback != null)
-        {
-            callback();
-        }
     }
 
     public void CloseNotice()
@@ -87,6 +97,12 @@ public class UINotice : MonoBehaviour
         squashNStretch.UI_Scaling_Hide(() =>
         {
             Panel.SetActive(false);
+
+            if (noticeCloseCallback != null)
+            {
+                noticeCloseCallback();
+                noticeCloseCallback = null;
+            }
         });
     }
 }

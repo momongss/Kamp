@@ -87,7 +87,7 @@ public class MeatTwoSided : Food
         PS_cookSmoke.Stop();
         PS_complete.Play();
 
-        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
+        CookManager.I.OnCompleteWork(this, Food.Action.Roast);
     }
 
     protected override void OnTriggerEnter(Collider other)

@@ -9,6 +9,6 @@ public class FoodSelectButton : MonoBehaviour
 
     public void Select()
     {
-        CookManager.Instance.SelectRecipe(foodType, cookCount);
+        CookManager.I.SelectRecipe(foodType, cookCount);
     }
 }

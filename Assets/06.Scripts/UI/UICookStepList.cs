@@ -24,9 +24,6 @@ public class UICookStepList : UIPanel
         for (int i = 0; i < stepListParent.childCount; i++)
         {
             UICookStep step = stepListParent.GetChild(i).GetComponent<UICookStep>();
-            step.StartStep();
-
-
             stepList.Add(step);
         }
 
@@ -43,7 +40,7 @@ public class UICookStepList : UIPanel
             g.gameObject.SetActive(false);
         }
 
-        stepList[step].gameObject.SetActive(true);
+        stepList[step].StartStep();
     }
 
     public void OnCompleteWork(Food food, Food.Action action)

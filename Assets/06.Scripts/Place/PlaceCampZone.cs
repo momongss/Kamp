@@ -16,7 +16,7 @@ public class PlaceCampZone : MonoBehaviour
     {
         if (other.CompareTag(Tag.Player))
         {
-            CharacterManager.Instance.SetCharacters(Character.State.Idle);
+            CharacterManager.I.SetCharacters(Character.State.Idle);
             UIPlayerNotice.I.ShowNotice("이제 캠핑을 시작해요!!", 3f);
             MissionManager.I.StartMissionRoutines();
 

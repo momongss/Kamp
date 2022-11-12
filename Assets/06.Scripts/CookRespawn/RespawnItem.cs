@@ -6,9 +6,14 @@ public class RespawnItem : MonoBehaviour
 {
     public GameObject item;
 
+    public GameObject prevSpawnedItem;
+
     public void Respawn()
     {
-        print("Spawn");
-        Instantiate(item, transform.position, transform.rotation);
+        if (prevSpawnedItem)
+        {
+            Destroy(prevSpawnedItem);
+        }
+        prevSpawnedItem = Instantiate(item, transform.position, transform.rotation);
     }
 }

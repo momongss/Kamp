@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    public static CharacterManager Instance { get; private set; }
+    public static CharacterManager I { get; private set; }
 
     public List<Character> characterList = new List<Character>();
 
     private void Awake()
     {
-        Instance = this;
+        I = this;
     }
 
     public void RegisterCharacter(Character c)

@@ -22,6 +22,11 @@ public class SquashNStretch : MonoBehaviour
         Squash_N_Stretch();
     }
 
+    private void OnEnable()
+    {
+        Squash_N_Stretch();
+    }
+
     public void UI_Scaling_Show()
     {
         transform.localScale = new Vector3(

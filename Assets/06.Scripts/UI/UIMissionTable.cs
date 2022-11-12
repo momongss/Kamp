@@ -22,7 +22,6 @@ public class UIMissionTable : UINotice
     {
         foreach (var t in missions)
         {
-            print(t);
             switch (t)
             {
                 case MissionManager.Type.Tent:

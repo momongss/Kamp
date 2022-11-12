@@ -18,8 +18,6 @@ public class SpeechBubble : MonoBehaviour
         text.text = _text;
         gameObject.SetActive(true);
 
-        print(_text);
-
         StartCoroutine(_Hide(popTime));
     }
 

@@ -25,6 +25,7 @@ public class PlaceEattingZone : MonoBehaviour
     public Seat GetSeat()
     {
         Seat seat = GetAvailableSeatIndex();
+        seat.Sit();
 
         return seat;
     }

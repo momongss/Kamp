@@ -8,7 +8,7 @@ public class CookManager : MonoBehaviour
 
     public State state;
 
-    public static CookManager Instance;
+    public static CookManager I;
 
     public UICookStepManager uICookStepManager;
     public UISelectRecipe uISelectRecipe;
@@ -16,16 +16,24 @@ public class CookManager : MonoBehaviour
 
     public List<Food> food_completed_list = new List<Food>();
 
+    [SerializeField] CookingSet cookingSet;
+
     public void SelectRecipe(Food.Type foodType, int count = 1)
     {
         uISelectRecipe.Hide();
         uICookStepManager.StartCookStep(foodType, count);
-        CookRespawnManager.I.Respawn(foodType, count);
+        // CookRespawnManager.I.Respawn(foodType, count);
+    }
+
+    public void StartCooking()
+    {
+        cookingSet.Activate();
+        MealManager.I.StartMeal();
     }
 
     private void Awake()
     {
-        Instance = this;
+        I = this;
 
         SetState(State.Select);
     }

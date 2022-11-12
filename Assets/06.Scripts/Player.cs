@@ -24,5 +24,7 @@ public class Player : MonoBehaviour
         {
             UIMissionTable.I.ToggleNotice();
         });
+
+        transform.LookAt(CharacterManager.I.transform.position);
     }
 }

@@ -804,7 +804,7 @@ MonoBehaviour:
   rewardMoney: 0
   Obj_Exp: {fileID: 7734526382534941744}
   Obj_Money: {fileID: 7734526383632952669}
-  missionType: 0
+  missionType: 1
 --- !u!1 &7734526384587982214
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,6 @@ public class Roastable : FoodPiece
     Material mat;
 
     public bool isCooking = false;
-    bool isCompleted = false;
 
     Collider currFire;
 
@@ -74,7 +73,7 @@ public class Roastable : FoodPiece
     void CompletedCooking()
     {
         cookCompleteEvent.Invoke();
-        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
+        CookManager.I.OnCompleteWork(this, Food.Action.Roast);
     }
 
     protected override void OnTriggerEnter(Collider other)
