@@ -8,8 +8,8 @@ public class UIMissionTable : UINotice
 
     public Transform tr_missionUI_Parent;
 
-    public GameObject Prefab_MissionUI_Tent;
-    public GameObject Prefab_MissionUI_Cook;
+    public UIMission Prefab_MissionUI_Tent;
+    public UIMission Prefab_MissionUI_Cook;
 
     protected override void Awake()
     {
@@ -18,17 +18,17 @@ public class UIMissionTable : UINotice
         base.Awake();
     }
 
-    public void SetMissions(MissionManager.Type[] missions)
+    public void SetMissions(Mission[] missions)
     {
-        foreach (var t in missions)
+        foreach (var m in missions)
         {
-            switch (t)
+            switch (m.type)
             {
                 case MissionManager.Type.Tent:
-                    Instantiate(Prefab_MissionUI_Tent, tr_missionUI_Parent);
+                    m.uiMission = Instantiate(Prefab_MissionUI_Tent, tr_missionUI_Parent);
                     break;
                 case MissionManager.Type.Cook:
-                    Instantiate(Prefab_MissionUI_Cook, tr_missionUI_Parent);
+                    m.uiMission = Instantiate(Prefab_MissionUI_Cook, tr_missionUI_Parent);
                     break;
             }
         }

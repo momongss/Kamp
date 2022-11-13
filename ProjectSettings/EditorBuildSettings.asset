@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/01.Scenes/Opening.unity
+    guid: 23448b4918a5321478ac057292eeb916
+  - enabled: 1
     path: Assets/01.Scenes/GreenScenes/Green01.unity
     guid: 3402604420337f94da111f6ddf1fb716
   - enabled: 1
     path: Assets/01.Scenes/FoodDemo.unity
     guid: ba492d5054a5c5f4ebf16163b503ede4
-  - enabled: 1
-    path: Assets/01.Scenes/Opening.unity
-    guid: 23448b4918a5321478ac057292eeb916
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f3d36b094c7e90a48bfeecc8253553a0,
       type: 2}

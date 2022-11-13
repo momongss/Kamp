@@ -71,9 +71,6 @@ public class CookManager : MonoBehaviour
     {
         SetState(State.CompleteCooking);
 
-        MissionManager.I.OnMissionComplete(MissionManager.Type.Cook);
-
-        print($"Add {food}");
         food_completed_list.Add(food);
     }
 

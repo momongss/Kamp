@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Android.Types;
 using UnityEngine;
 
 public class Food : MonoBehaviour
@@ -45,7 +44,6 @@ public class Food : MonoBehaviour
 
         if (isCompleted && !isGived)
         {
-            print($"Coll {other.gameObject.layer}");
             if (other.gameObject.layer == Layer.Character)
             {
                 isGived = true;

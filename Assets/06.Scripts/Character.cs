@@ -58,6 +58,8 @@ public class Character : MonoBehaviour
     SquashNStretch squashNStretch;
 
     public ParticleSystem PS_Appear;
+    public ParticleSystem PS_Heart;
+
     public string[] talk_anything = new string[] {
         "È÷Èþ",
         "³Ê¹« ¿¹»Ú´Ù~",
@@ -87,12 +89,13 @@ public class Character : MonoBehaviour
 
     public void GiveFood(Food food)
     {
-        var effect = Instantiate(EffectPack.I.Confetti_01, transform.position, Quaternion.identity);
+        PS_Heart.Play();
 
         speechBubble.Talk("³È³È.. °í¸¶¿ö!!", 4f);
 
+        MissionManager.I.OnMissionComplete(MissionManager.Type.Cook);
+
         Destroy(food.gameObject);
-        Destroy(effect.gameObject, 5f);
     }
 
     void SetAgentWalkable(bool isActive)

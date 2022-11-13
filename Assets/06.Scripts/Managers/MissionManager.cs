@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class MissionManager : MonoBehaviour
@@ -8,57 +9,42 @@ public class MissionManager : MonoBehaviour
     public static MissionManager I { get; private set; }
 
     public enum Type { Tent, Cook, None }
-    public Type type;
 
-    bool isDoingMission = false;
-
-    public List<Dictionary<string, object>> mission_list;
     public List<Dictionary<string, object>> rewardMap_Exp;
     public List<Dictionary<string, object>> rewardMap_Money;
 
     public Transform Tr_missionUI_Parent;
     UIMission[] missionUIs;
 
+    MissionData missionData;
+
     int max_day;
 
-    public Type[][] missions;
+    public Mission[] missions;
 
     public int daycount = 16;
 
     public int currDay = 0;
 
-    public Type[] Mission_Day0;
-    public Type[] Mission_Day1;
-    public Type[] Mission_Day2;
-    public Type[] Mission_Day3;
-    public Type[] Mission_Day4;
-    public Type[] Mission_Day5;
-    public Type[] Mission_Day6;
-    public Type[] Mission_Day7;
-    public Type[] Mission_Day8;
-    public Type[] Mission_Day9;
-    public Type[] Mission_Day10;
-    public Type[] Mission_Day11;
-    public Type[] Mission_Day12;
-    public Type[] Mission_Day13;
-    public Type[] Mission_Day14;
-    public Type[] Mission_Day15;
-
     public UIMissionTable UI_MissionTable;
-
-    int curr_mission_index = 0;
 
     private void Awake()
     {
         I = this;
 
+        missionData = GetComponent<MissionData>();
+
+        missions = missionData.GetMissionsOfDay(currDay);
+
         missionUIs = new UIMission[Tr_missionUI_Parent.childCount];
+
+        Type[] missionTypes = GetMissionTypes(missions);
 
         for (int i = 0; i < Tr_missionUI_Parent.childCount; i++)
         {
             missionUIs[i] = Tr_missionUI_Parent.GetChild(i).GetComponent<UIMission>();
 
-            if (Mission_Day1.Contains(missionUIs[i].missionType))
+            if (missionTypes.Contains(missionUIs[i].missionType))
             {
                 missionUIs[i].gameObject.SetActive(true);
             }
@@ -73,68 +59,41 @@ public class MissionManager : MonoBehaviour
 
         max_day = rewardMap_Exp.Count - 1;
 
-        missions = new Type[daycount][];
-        missions[0] = Mission_Day0;
-        missions[1] = Mission_Day1;
-        missions[2] = Mission_Day2;
-        missions[3] = Mission_Day3;
-        missions[4] = Mission_Day4;
-        missions[5] = Mission_Day5;
-        missions[6] = Mission_Day6;
-        missions[7] = Mission_Day7;
-        missions[8] = Mission_Day8;
-        missions[9] = Mission_Day9;
-        missions[10] = Mission_Day10;
-        missions[11] = Mission_Day11;
-        missions[12] = Mission_Day12;
-        missions[13] = Mission_Day13;
-        missions[14] = Mission_Day14;
-        missions[15] = Mission_Day15;
-
-        UI_MissionTable.SetMissions(missions[currDay]);
+        UI_MissionTable.SetMissions(missions);
     }
 
-    public void StartMissionRoutines()
+    public Type[] GetMissionTypes(Mission[] _missions)
     {
-        StartCoroutine(MissionStart(missions[currDay][curr_mission_index], 0f));
-    }
+        Type[] types = new Type[_missions.Length];
 
-    IEnumerator MissionStart(Type _type, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        type = _type;
-        isDoingMission = true;
-
-        switch (_type)
+        for (int i = 0; i < _missions.Length; i++)
         {
-            case Type.Tent:
-                UIPlayerNotice.I.ShowNotice("텐트를 치세요!!");
-                break;
-            case Type.Cook:
-                UIPlayerNotice.I.ShowNotice("친구들을 위해 요리를 해요");
-                break;
+            types[i] = missions[i].type;
         }
+
+        return types;
+    }
+
+    public Mission GetMission(Type type)
+    {
+        foreach (Mission m in missions)
+        {
+            if (m.type == type) return m;
+        }
+
+        return null;
     }
 
     public void OnMissionComplete(Type _type)
     {
-        if (isDoingMission == false) return;
-        if (type != _type) return;
+        Mission m = GetMission(_type);
+        if (m == null) return;
 
-        type = Type.None;
-        isDoingMission = false;
+        bool isMissionComplete = m.Progress();
 
-        if (curr_mission_index < missions[currDay].Length - 1)
+        if (isMissionComplete)
         {
             GiveReward(_type);
-
-            curr_mission_index++;
-            StartCoroutine(MissionStart(missions[currDay][curr_mission_index], 5f));
-        }
-        else
-        {
-            GiveReward(_type);
-
             CampingManager.Instance.OnCompleteMissionRoutines();
         }
     }
@@ -195,6 +154,38 @@ public class MissionManager : MonoBehaviour
             ExpManager.Instance.Add_Exp(rewardExp, $"+{rewardExp + bonus}exp (보너스 {bonus}exp) " +
                 $"오늘 미션을 모두 완료했어요!! " +
                 $"이제 편안히 캠핑을 즐겨봐요!");
+        }
+    }
+}
+
+public class Mission
+{
+    public MissionManager.Type type;
+    public int workCount;
+    public int currWorkCount = 0;
+
+    public UIMission uiMission;
+
+    public Mission(MissionManager.Type _type, int _workCount = 1)
+    {
+        type = _type;
+        workCount = _workCount;
+    }
+
+    public bool Progress()
+    {
+        currWorkCount++;
+
+        uiMission.SetProgress((float)currWorkCount / workCount);
+        UIMissionTable.I.ShowNotice();
+
+        if (currWorkCount >= workCount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

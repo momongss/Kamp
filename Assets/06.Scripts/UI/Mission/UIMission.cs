@@ -20,10 +20,14 @@ public class UIMission : MonoBehaviour
     float progress = 0;
 
     public MissionManager.Type missionType;
+    public GameObject UI_complete;
 
     private void Awake()
     {
+        UI_complete.SetActive(false);
+
         progressBar = GetComponent<Image>();
+        progressBar.fillAmount = progress;
 
         Text_Exp = Obj_Exp.GetComponentInChildren<TextMeshProUGUI>();
         Text_Money = Obj_Money.GetComponentInChildren<TextMeshProUGUI>();
@@ -33,6 +37,17 @@ public class UIMission : MonoBehaviour
     {
         SetExp();
         SetMoney();
+    }
+
+    public void SetProgress(float _progress)
+    {
+        progress = _progress;
+        progressBar.fillAmount = progress;
+
+        if (progress >= 1f)
+        {
+            UI_complete.SetActive(true);
+        }
     }
 
     public void AddProgress(float _progress)
