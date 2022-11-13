@@ -11,8 +11,23 @@ public class UICookStep : MonoBehaviour
     public int totalWorkCount;
     public int workCount;
 
+    public RespawnItem[] respawnItems;
+
     public void StartStep()
     {
         workCount = 0;
+
+        gameObject.SetActive(true);
+        RespawnItem();
+    }
+
+    public void RespawnItem()
+    {
+        respawnItems = GetComponentsInChildren<RespawnItem>();
+        foreach (var item in respawnItems)
+        {
+            print(item);
+            item.Respawn();
+        }
     }
 }

@@ -25,11 +25,13 @@ public class FoodPiece : Food
 
         if (other.CompareTag(Tag.Pot))
         {
-            CookManager.Instance.OnCompleteWork(this, Action.PutInPot);
+            CookManager.I.OnCompleteWork(this, Action.PutInPot);
         }
         else if (other.CompareTag(Tag.Kochi))
         {
+            print("꼬치다");
             kochi = other.GetComponent<Kochi>();
+            print($"{other} {kochi}");
 
             print("꽂을려고 시도함.");
         }
@@ -39,7 +41,6 @@ public class FoodPiece : Food
     {
         if (other.CompareTag(Tag.Kochi))
         {
-            print("여기");
             if (kochi == other.GetComponent<Kochi>())
             {
                 print("꽂을려다 말았음.");
@@ -91,7 +92,10 @@ public class FoodPiece : Food
 
     void OnUnGrabed()
     {
+        print("UnGrabbed");
         if (kochi == null) return;
+
+        print("Kochi");
 
         Destroy(grabInteractable);
         Destroy(rigid);
@@ -107,7 +111,7 @@ public class FoodPiece : Food
         Destroy(grabInteractable);
         Destroy(rigid);
 
-        CookManager.Instance.OnCompleteWork(this, Action.Skewer);
+        CookManager.I.OnCompleteWork(this, Action.Skewer);
     }
 
     public void Cut(int pieceNum)
@@ -187,7 +191,7 @@ public class FoodPiece : Food
             foodPiece.isStickable = true;
             foodPiece.transform.parent = null;
 
-            CookManager.Instance.OnCompleteWork(this, Action.Cut);
+            CookManager.I.OnCompleteWork(this, Action.Cut);
         }
 
         foodPiece.foodType = foodType;

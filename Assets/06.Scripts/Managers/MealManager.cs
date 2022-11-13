@@ -16,17 +16,7 @@ public class MealManager : MonoBehaviour
     {
         foreach (Character c in CampingManager.Instance.activeCharacterList)
         {
-            c.GotoEat();
-        }
-
-        Seat seat = PlaceEattingZone.I.GetSeat();
-        seat.Sit(Player.I.transform);
-
-        List<Food> foodList = CookManager.Instance.food_completed_list;
-
-        foreach (Food f in foodList)
-        {
-            FoodSpotManager.I.PutFood(f);
+            c.ChangeState(Character.State.GotoEat);
         }
     }
 

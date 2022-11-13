@@ -33,7 +33,7 @@ public class UIPlayerNotice_LevelUP : UINotice
 
         Character.Type type = StatManager.characterUnlockLevelBook[level];
 
-
+        noticeCloseCallback = callback;
 
         if (type != Character.Type.None)
         {
@@ -50,6 +50,6 @@ public class UIPlayerNotice_LevelUP : UINotice
             }
         }
 
-        StartCoroutine(_ShowNotice($"{level} 레벨", timeout, callback));
+        StartCoroutine(_ShowNotice($"{level} 레벨", timeout));
     }
 }

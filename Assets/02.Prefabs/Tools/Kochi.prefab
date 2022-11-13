@@ -272,6 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd643e5288d08914e8c45ff1824844c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasRigidbody: 1
+  rigid: {fileID: 0}
+  satiety: 10
   foodType: 5
   foodPosListParent: {fileID: 1593873649}
   foodPosList: []
@@ -304,7 +307,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 2.4}
+  m_Size: {x: 0.2, y: 0.2, z: 2.4}
   m_Center: {x: 0, y: 0, z: 0.72}
 --- !u!114 &967396118
 MonoBehaviour:
@@ -382,6 +385,8 @@ MonoBehaviour:
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -450,6 +455,9 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
 --- !u!1001 &5748937383256214504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -521,6 +529,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kochi
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c052edda5a371d7419bd2c158ab707fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c052edda5a371d7419bd2c158ab707fe, type: 3}

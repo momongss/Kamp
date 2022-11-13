@@ -18,8 +18,6 @@ public class Meat : Food
 
     bool isCooking = false;
 
-    bool isCompleted = false;
-
     Collider currFire;
 
     private void Start()
@@ -53,7 +51,7 @@ public class Meat : Food
         if (PS_cookSmoke) PS_cookSmoke.Stop();
         if (PS_complete) PS_complete.Play();
 
-        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
+        CookManager.I.OnCompleteWork(this, Food.Action.Roast);
     }
 
     protected override void OnTriggerEnter(Collider other)

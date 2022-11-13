@@ -14,6 +14,8 @@ public class ItemManager : MonoBehaviour
 
     const string item_dataPath = "/Item.json";
 
+    Dictionary<Item.Type, int> usingItemCount_Dic = new Dictionary<Item.Type, int>();
+
     private void Awake()
     {
         I = this;
@@ -24,6 +26,11 @@ public class ItemManager : MonoBehaviour
 
         string s_item = JsonData.LoadJson(item_dataPath);
         itemDataList = JsonUtility.FromJson<ItemDataList>(s_item);
+
+        foreach (ItemData d in itemDataList.itemCountList)
+        {
+            usingItemCount_Dic.Add(d.type, 0);
+        }
     }
 
     public int GetItemCount(Item.Type type)
@@ -31,7 +38,28 @@ public class ItemManager : MonoBehaviour
         ItemData item = GetItem(type);
 
         if (item == null) return 0;
-        else return item.count;
+        else return item.count - usingItemCount_Dic[type];
+    }
+
+    public void UseItem(Item.Type type, bool isDisposable = false)
+    {
+        if (isDisposable)
+        {
+            ItemData d = GetItem(type);
+
+            if (d.count <= 0)
+            {
+                Debug.LogError($"로직에러 위험 : 개수가 0인 아이템 사용 발생 {d}");
+                return;
+            }
+
+            d.count--;
+            JsonData.SaveObj(itemDataList, item_dataPath);
+        }
+        else
+        {
+            usingItemCount_Dic[type]++;
+        }
     }
 
     ItemData GetItem(Item.Type type)

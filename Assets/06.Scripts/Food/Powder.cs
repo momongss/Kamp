@@ -17,7 +17,7 @@ public class Powder : Food
 
         if (other.CompareTag(Tag.Pot))
         {
-            CookManager.Instance.OnCompleteWork(this, Action.PutInPot);
+            CookManager.I.OnCompleteWork(this, Action.PutInPot);
 
             Destroy(gameObject);
         }

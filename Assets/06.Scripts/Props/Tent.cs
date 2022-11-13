@@ -12,5 +12,8 @@ public class Tent : MonoBehaviour
     {
         PS_DustBurst.Play();
         Destroy(PS_DustBurst.gameObject, 10f);
+
+        SquashNStretch squashNStretch = GetComponent<SquashNStretch>();
+        squashNStretch.Squash_N_Stretch(1.2f, 0.7f, 1.2f);
     }
 }

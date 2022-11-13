@@ -48,6 +48,7 @@ MonoBehaviour:
   uICookStepManager: {fileID: 0}
   uISelectRecipe: {fileID: 833992686657815840}
   uIComplete: {fileID: 0}
+  food_completed_list: []
 --- !u!1 &6036313874993296658
 GameObject:
   m_ObjectHideFlags: 0

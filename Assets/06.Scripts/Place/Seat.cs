@@ -13,11 +13,8 @@ public class Seat : MonoBehaviour
         isSeated = false;
     }
 
-    public void Sit(Transform t)
+    public void Sit()
     {
-        t.position = transform.position;
-        t.LookAt(PlaceEattingZone.I.transform);
-
         isSeated = true;
     }
 

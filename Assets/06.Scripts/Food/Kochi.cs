@@ -17,8 +17,6 @@ public class Kochi : Food
 
     bool isRoasted = false;
 
-    FoodPiece currPiece;
-
     protected override void Awake()
     {
         base.Awake();
@@ -29,6 +27,8 @@ public class Kochi : Food
 
     protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
+
         if (other.CompareTag(Tag.Fire))
         {
             foreach (var r in roastableList)
@@ -89,7 +89,8 @@ public class Kochi : Food
     {
         if (isRoasted) return;
         isRoasted = true;
+        isCompleted = true;
 
-        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
+        CookManager.I.OnCompleteWork(this, Food.Action.Roast);
     }
 }

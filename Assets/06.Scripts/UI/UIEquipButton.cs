@@ -11,7 +11,6 @@ public class UIEquipButton : MonoBehaviour
 
     public SpawnBall spawnBall;
 
-    int itemCount = 0;
     Button button;
 
     private void Awake()
@@ -19,21 +18,29 @@ public class UIEquipButton : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
-            SpawnItemBall();
-
-            UIEquipment.I.CloseNotice();
+            if (SpawnItemBall())
+            {
+                UIEquipment.I.CloseNotice();
+            }
         });
     }
 
     public void SetItemCount(int count)
     {
-        itemCount = count;
-
         Text_itemCount.text = $"{count}";
     }
 
-    public void SpawnItemBall()
+    public bool SpawnItemBall()
     {
+        int itemCount = ItemManager.I.GetItemCount(type);
+        if (itemCount == 0) return false;
+
         Instantiate(spawnBall, Player.I.spawnBallPoint.position, Player.I.spawnBallPoint.rotation);
+
+        ItemManager.I.UseItem(type);
+
+        SetItemCount(itemCount - 1);
+
+        return true;
     }
 }

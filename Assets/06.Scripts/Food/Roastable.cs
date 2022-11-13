@@ -15,7 +15,6 @@ public class Roastable : FoodPiece
     Material mat;
 
     public bool isCooking = false;
-    bool isCompleted = false;
 
     Collider currFire;
 
@@ -31,11 +30,14 @@ public class Roastable : FoodPiece
         meatRenderer = GetComponentInChildren<MeshRenderer>();
         myMeshFilter = GetComponentInChildren<MeshFilter>();
 
-        PS_Smoke_Instanced = Instantiate(EffectPack.I.PS_Smoke, transform);
+        mat = meatRenderer.material;
+    }
+
+    private void Start()
+    {
+        PS_Smoke_Instanced = Instantiate(EffectPack.I.PS_Smoke, transform.GetChild(0));
         PS_Smoke_Instanced.transform.localPosition = Vector3.zero;
         PS_Smoke_Instanced.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-
-        mat = meatRenderer.material;
     }
 
     void Update()
@@ -71,7 +73,7 @@ public class Roastable : FoodPiece
     void CompletedCooking()
     {
         cookCompleteEvent.Invoke();
-        CookManager.Instance.OnCompleteWork(this, Food.Action.Roast);
+        CookManager.I.OnCompleteWork(this, Food.Action.Roast);
     }
 
     protected override void OnTriggerEnter(Collider other)

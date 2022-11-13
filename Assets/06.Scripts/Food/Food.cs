@@ -9,6 +9,9 @@ public class Food : MonoBehaviour
 
     public int satiety = 10;
 
+    public bool isCompleted = false;
+    public bool isGived = false;
+
     protected virtual void Awake()
     {
         if (hasRigidbody && rigid == null)
@@ -32,10 +35,21 @@ public class Food : MonoBehaviour
             FloatingFood _f = gameObject.AddComponent<FloatingFood>();
             _f.pot = other.GetComponent<Pot>(); ;
         }
+
         else if (other.CompareTag(Tag.Stew))
         {
             Stew stew = other.GetComponent<Stew>();
             stew.PutFood(this);
+        }
+
+        if (isCompleted && !isGived)
+        {
+            if (other.gameObject.layer == Layer.Character)
+            {
+                isGived = true;
+                Character character = other.GetComponent<Character>();
+                character.GiveFood(this);
+            }
         }
     }
 

@@ -24,7 +24,7 @@ public class SelectSceneManager : MonoBehaviour
     {
         DontDestroyOnLoad(Char_Map_Info.I.gameObject);
 
-        SceneManager.LoadScene(Scene.FoodDemo);
+        SceneManager.LoadScene(Scene.Green01);
     }
 
     public void SelectMap(UISelectMap.MapType _mapType)

@@ -10,5 +10,4 @@ public class EquipManager : MonoBehaviour
     {
         I = this;
     }
-
 }

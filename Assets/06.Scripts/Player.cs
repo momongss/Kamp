@@ -19,5 +19,12 @@ public class Player : MonoBehaviour
         {
             UIEquipment.I.ToggleNotice();
         });
+
+        XRInput.I.SubscribeSecondaryButton(() =>
+        {
+            UIMissionTable.I.ToggleNotice();
+        });
+
+        transform.LookAt(CharacterManager.I.transform.position);
     }
 }

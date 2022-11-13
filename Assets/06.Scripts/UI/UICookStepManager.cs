@@ -26,7 +26,7 @@ public class UICookStepManager : UIPanel
 
     public void ResetCookStep()
     {
-        CookManager.Instance.SetState(CookManager.State.Select);
+        CookManager.I.SetState(CookManager.State.Select);
     }
 
     public void StartCookStep(Food.Type foodType, int count)
@@ -50,7 +50,7 @@ public class UICookStepManager : UIPanel
 
     public void OnCompleteAllStep(Food food)
     {
-        CookManager.Instance.OnCompleteCooking(food);
+        CookManager.I.OnCompleteCooking(food);
     }
 
     void HideAllUI()
