@@ -61,9 +61,7 @@ public class ExpManager : MonoBehaviour
         bool isLevelUP = Set_Level();
         if (!isLevelUP)
         {
-            UIPlayerNotice_LevelUP.I.CloseNotice();
 
-            UIPlayerNotice.I.ShowNotice($"+{rewardExp}exp!!", 4f);
         }
     }
 

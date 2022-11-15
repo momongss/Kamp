@@ -27,19 +27,31 @@ public class CampingManager : MonoBehaviour
 
     void Start()
     {
-        campingStory = new UnityAction[3];
+        campingStory = new UnityAction[5];
         campingStory[0] = () =>
+        {
+            print("X");
+            UI_Notice_X_tutorial.I.ShowNotice(null, -1, PlayNextStep);
+        };
+
+        campingStory[1] = () =>
+        {
+            print("Y");
+            UI_Notice_Y_tutorial.I.ShowNotice(null, 7f, PlayNextStep);
+        };
+
+        campingStory[2] = () =>
         {
             SpawnCharacters();
             UIPlayerNotice.I.ShowNotice("캐릭터들이 도착했어요!!", 4f, PlayNextStep);
         };
 
-        campingStory[1] = () =>
+        campingStory[3] = () =>
         {
             UIMissionTable.I.ShowNotice(null, 4f, PlayNextStep);
         };
 
-        campingStory[2] = () =>
+        campingStory[4] = () =>
         {
             // 식사시간
             UIPlayerNotice.I.ShowNotice("식사 시간이예요! 요리를 하세요", 4f);
@@ -51,6 +63,7 @@ public class CampingManager : MonoBehaviour
 
     void PlayNextStep()
     {
+        print($"Play {storyIndex}");
         campingStory[storyIndex]();
         storyIndex++;
     }

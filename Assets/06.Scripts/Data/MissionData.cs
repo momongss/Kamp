@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class MissionData : MonoBehaviour
 {
+    bool isInitialized = false;
+
     public Mission[][] datas;
 
     public int missionDaycount = 10;
 
     public Mission[] GetMissionsOfDay(int day)
     {
+        Init();
+
         if (day < 0 || day >= missionDaycount)
         {
             Mission[] missions = new Mission[2];
@@ -26,12 +30,21 @@ public class MissionData : MonoBehaviour
 
     private void Awake()
     {
+        Init();
+    }
+
+    void Init()
+    {
+        if (isInitialized) return;
+        isInitialized = true;
+
         datas = new Mission[missionDaycount][];
 
-        datas[0] = new Mission[2];
+        datas[0] = new Mission[3];
 
         datas[0][0] = new Mission(MissionManager.Type.Cook, 4);
         datas[0][1] = new Mission(MissionManager.Type.Tent);
+        datas[0][2] = new Mission(MissionManager.Type.CampFire);
 
         datas[1] = new Mission[2];
 

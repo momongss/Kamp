@@ -8,7 +8,7 @@ public class MissionManager : MonoBehaviour
 {
     public static MissionManager I { get; private set; }
 
-    public enum Type { Tent, Cook, None }
+    public enum Type { Tent, Cook, CampFire, None }
 
     public List<Dictionary<string, object>> rewardMap_Exp;
     public List<Dictionary<string, object>> rewardMap_Money;
@@ -145,15 +145,13 @@ public class MissionManager : MonoBehaviour
 
         if (isCompleteAllMission == false)
         {
-            ExpManager.Instance.Add_Exp(rewardExp, $"+{rewardExp}exp!!");
+            ExpManager.Instance.Add_Exp(rewardExp);
         }
         else
         {
             int bonus = 100;
 
-            ExpManager.Instance.Add_Exp(rewardExp, $"+{rewardExp + bonus}exp (보너스 {bonus}exp) " +
-                $"오늘 미션을 모두 완료했어요!! " +
-                $"이제 편안히 캠핑을 즐겨봐요!");
+            ExpManager.Instance.Add_Exp(rewardExp);
         }
     }
 }

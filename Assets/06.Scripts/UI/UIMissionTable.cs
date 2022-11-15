@@ -10,6 +10,7 @@ public class UIMissionTable : UINotice
 
     public UIMission Prefab_MissionUI_Tent;
     public UIMission Prefab_MissionUI_Cook;
+    public UIMission Prefab_MissionUI_Campfire;
 
     protected override void Awake()
     {
@@ -29,6 +30,9 @@ public class UIMissionTable : UINotice
                     break;
                 case MissionManager.Type.Cook:
                     m.uiMission = Instantiate(Prefab_MissionUI_Cook, tr_missionUI_Parent);
+                    break;
+                case MissionManager.Type.CampFire:
+                    m.uiMission = Instantiate(Prefab_MissionUI_Campfire, tr_missionUI_Parent);
                     break;
             }
         }

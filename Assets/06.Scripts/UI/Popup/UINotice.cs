@@ -35,10 +35,7 @@ public class UINotice : MonoBehaviour
                 CloseNotice();
             });
         }
-    }
 
-    private void Start()
-    {
         CloseNotice();
     }
 
@@ -80,9 +77,11 @@ public class UINotice : MonoBehaviour
 
         squashNStretch.UI_Scaling_Show();
 
+        print(timeout);
         if (timeout != -1)
         {
             yield return new WaitForSeconds(timeout);
+            print("Close");
 
             CloseNotice();
         }
@@ -100,6 +99,7 @@ public class UINotice : MonoBehaviour
 
             if (noticeCloseCallback != null)
             {
+                print("Close");
                 noticeCloseCallback();
                 noticeCloseCallback = null;
             }

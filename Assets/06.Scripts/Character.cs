@@ -72,6 +72,8 @@ public class Character : MonoBehaviour
 
     public void OnSelected()
     {
+        if ((state == State.Idle || state == State.WalkAround) == false) return;
+
         squashNStretch.Squash_N_Stretch(1.15f, 0.85f, 1.15f);
 
         float distance = Vector3.Distance(transform.position, Player.I.transform.position);
@@ -94,6 +96,8 @@ public class Character : MonoBehaviour
         speechBubble.Talk("³È³È.. °í¸¶¿ö!!", 4f);
 
         MissionManager.I.OnMissionComplete(MissionManager.Type.Cook);
+
+        ChangeState(State.WalkAround);
 
         Destroy(food.gameObject);
     }
